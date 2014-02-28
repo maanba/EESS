@@ -64,7 +64,7 @@ public class Assembler
         Student student = new Student();
         student.setIdStudent(dtoStudent.getId());
         student.setStudentName(dtoStudent.getName());
-        //List<DTOSubject> subjects = new ArrayList
+//        List<DTOSubject> subjects = new ArrayList
         Collection<DTOSubject> subject = new ArrayList<>(dtoStudent.getSubjects());
         student.setSubjectStudentCollection(subject);
         return student;
