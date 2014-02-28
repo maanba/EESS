@@ -10,11 +10,13 @@ import dto.DTOStudent;
 import dto.DTOSubject;
 import dto.DTOTeacher;
 import java.util.ArrayList;
+import javax.ejb.Remote;
 
 /**
  *
  * @author danielthomsen1990
  */
+@Remote
 public interface EessInterface 
 {
     public ArrayList<DTOStudent> getStudents();
