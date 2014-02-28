@@ -7,12 +7,15 @@
 package dk.cphbusiness.control;
 
 import contract.EessInterface;
+import dk.cphbusiness.model.Assembler;
 import dk.cphbusiness.model.Student;
+import dk.cphbusiness.model.Subject;
 import dto.DTOStudent;
 import dto.DTOSubject;
 import dto.DTOTeacher;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -66,10 +69,13 @@ public class EESSManagerBean implements EessInterface {
     @Override
     public ArrayList<DTOSubject> getSubjects() {
         Query query = em.createNamedQuery("Subject.findAll");
-        Collection subject = new ArrayList<>();
-        subject = query.getResultList();
-        //SKAL ÆNDRES TIL FX: assambler.createDTOSubject(subject);
-        return null;
+        Collection subject = query.getResultList();
+        Collection<DTOSubject> subjects = Assembler.CreateSubjects(subject);
+        ArrayList<DTOSubject> subs = new ArrayList();
+        for (DTOSubject ret : subjects) {
+            subs.add(ret);
+        }
+        return subs;
     }
 
     @Override
