@@ -1,0 +1,50 @@
+
+#main{
+    width: 960px;
+    margin: 0 auto;
+    margin-top: -8px;
+    box-shadow: -3px 0px 10px #888888}
+
+#content{
+    background-color: white;
+    word-wrap: break-word;
+    box-shadow: 3px 0px 10px #888888}
+
+#menuItem{
+    margin-right: 0px;
+    cursor: pointer}
+
+.menuContainer{
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Open Sans', Helvetica, sans-serif;
+    white-space: nowrap}
+
+#pools_list_none{
+    width: 280px;
+    height: 500px;
+    margin-right: 18px;
+    float: left;
+}
+.pool_button_arrow{
+    width: 100px;
+    height: 28px;
+    margin-bottom: 10px;
+}
+#button_a_container{
+    margin-bottom: 50px;
+}
+.pools_list_ab{
+    width: 240px;
+    height: 225px;
+}
+#pools_list_a{
+    margin-bottom: 50px;
+}
+#pools_button_container{
+    float: left;
+    margin-right: 18px;
+}
+#pools_container{
+    height: 500px;
+}

@@ -16,7 +16,8 @@ public class CommandFactory implements Factory {
     private Map<String, Command> commands = new HashMap();
     
     private CommandFactory() {
-        commands.put("main", new TargetCommand("/index.html"));
+        commands.put("main", new TargetCommand("/main.jsp"));
+        commands.put("manage_pools", new ViewPoolsPageCommand("/adm_pools.jsp"));
     }
     
     public static Factory getInstance(){

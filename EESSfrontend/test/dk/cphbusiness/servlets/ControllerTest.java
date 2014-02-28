@@ -1,5 +1,6 @@
 package dk.cphbusiness.servlets;
 
+import dk.cphbusiness.commands.CommandFactory;
 import dk.cphbusiness.interfaces.Command;
 import dk.cphbusiness.interfaces.Factory;
 import java.io.IOException;
@@ -85,11 +86,16 @@ public class ControllerTest {
 //
 //        context.checking(new Expectations() {
 //            {
-//                oneOf(factory).getCommand("main");
-//                will(returnValue(command));
-//                inSequence(sequence);
-//                oneOf(command).execute(request);
-//                will(returnValue("/index.html"));
+//                oneOf(request).getParameter("command");
+//                will(returnValue(null));
+////                inSequence(sequence);
+////                oneOf(factory).getCommand("main");
+////                will(returnValue(command));
+////                inSequence(sequence);
+////                oneOf(command).execute(request);
+////                will(returnValue("/index.html"));
+////                inSequence(sequence);
+////                oneOf(request).getRequestDispatcher("/index.html").forward(request, response);
 //            }
 //        });
 //

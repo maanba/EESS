@@ -3,7 +3,6 @@ package dk.cphbusiness.servlets;
 
 import dk.cphbusiness.commands.CommandFactory;
 import dk.cphbusiness.interfaces.Command;
-import dk.cphbusiness.interfaces.Factory;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,11 +19,12 @@ public class Controller extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String path = "/index.html";
+        String path = "/main.jsp";
         String commandString = request.getParameter("command");
-        commandString = "main";
-        Factory f = CommandFactory.getInstance();
-        Command command = f.getCommand(commandString);
+        if(commandString == null){
+            commandString = "main";
+        }
+        Command command = CommandFactory.getInstance().getCommand(commandString);
         path = command.execute(request);
         request.getRequestDispatcher(path).forward(request, response);
     }

@@ -1,0 +1,18 @@
+</div>
+<div style="background-color: #0E5C8C; margin-top: 6px">
+    <span style="text-align: left;margin-left: 40px">
+        <font style="color: white">All rights reserved BankBank</font>
+    </span>
+    <div id="footerlinks">
+        <ul style="text-align: left">
+            <li style="display: inline-block;margin-right: 10px"><a href="kontakt.jsp" style="color: white">Kontakt</a></li>
+            <li style="display: inline-block;margin-right: 10px"><a href="webmaster.jsp" style="color: white">Webmaster</a></li>
+            <li style="display: inline-block;margin-right: 10px"><a href="Sitemap.jsp" style="color: white">Sitemap</a></li>
+        </ul>
+
+    </div>
+</div>
+</div>
+</div>
+</body>
+</html>
