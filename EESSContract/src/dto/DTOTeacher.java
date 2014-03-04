@@ -7,6 +7,7 @@
 package dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,15 +19,18 @@ public class DTOTeacher implements Serializable
     
     private int id;
     private String name;
+    private String initials;
+    private ArrayList subject;
     
     public DTOTeacher()
     {
     }
     
-    public DTOTeacher (int id, String name)
+    public DTOTeacher (int id, String name, String initials)
     {
         this.id = id;
         this.name = name;
+        this.initials = initials;
     }
 
     public int getId() {
@@ -43,5 +47,15 @@ public class DTOTeacher implements Serializable
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getInitials()
+    {
+        return initials;
+    }
+
+    public void setInitials(String initials)
+    {
+        this.initials = initials;
     }
 }

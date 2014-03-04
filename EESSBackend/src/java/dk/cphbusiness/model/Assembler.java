@@ -18,13 +18,17 @@ import java.util.Collection;
 public class Assembler
 {
 
-    public static DTOStudent StudentObjectToDTOStudent(Student student, ArrayList<SubjectStudent> subjectstudents)
+    public static DTOStudent StudentObjectToDTOStudent(Student student, ArrayList<Subject> subjects)
     {
+        ArrayList<DTOSubject> DTOSubjects = new ArrayList();
+        for (Subject sub : subjects)
+        {
+            DTOSubjects.add(SubjectObjectToDTOSubject(sub));
+        } 
         DTOStudent newDTOStudent
                 = new DTOStudent(student.getIdStudent(),
                         student.getStudentName(),
-                        //Der mangler at blive modtaget en arrayList af et tilhørende subject.
-                        null);
+                        DTOSubjects);
         return newDTOStudent;
     }
 
@@ -52,8 +56,7 @@ public class Assembler
 
     public static DTOTeacher TeacherObjectToDTOTeacher(Teacher teacher)
     {
-        DTOTeacher newDTOTeacher
-                = new DTOTeacher(teacher.getIdTeacher(),
+        DTOTeacher newDTOTeacher = new DTOTeacher(teacher.getIdTeacher(),
                         teacher.getTeacherName(),
                         teacher.getIntials());
         return newDTOTeacher;

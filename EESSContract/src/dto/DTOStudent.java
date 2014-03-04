@@ -24,10 +24,11 @@ public class DTOStudent implements Serializable
     {
     }
     
-    public DTOStudent(int id, String name) 
+    public DTOStudent(int id, String name, ArrayList<DTOSubject> subjects) 
     {
         this.id = id;
         this.name = name;
+        this.subjects = subjects;
     }
     
     public void addSubject (DTOSubject subject)
@@ -54,8 +55,4 @@ public class DTOStudent implements Serializable
     public void setName(String name) {
         this.name = name;
     }
-    
-    
-    
-    
 }
