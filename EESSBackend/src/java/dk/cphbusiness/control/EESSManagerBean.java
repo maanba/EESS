@@ -28,32 +28,29 @@ import javax.persistence.Query;
 public class EESSManagerBean implements EessInterface {
     @PersistenceContext(unitName = "EESSBackendPU")
     private EntityManager em;
+    
     @Override
-    public ArrayList<DTOStudent> getStudents() 
+    public ArrayList<DTOStudent> getStudents()
     {
         Query query = em.createNamedQuery("Student.findAll");
-        ArrayList<Student> students = (ArrayList<Student>) query.getResultList();
+        List<Student> students = query.getResultList();
         ArrayList<DTOStudent> dtoStudents = new ArrayList<>();
-        ArrayList<Subject> arraySubjects = new ArrayList<>();
-        
         for (int i = 0; i < students.size(); i++)
         {
-            for(int n = 0; n < students.get(i).getSubjectStudentCollection().size(); n++)
+            ArrayList<Subject> arraySubjects = new ArrayList<>();
+            for (int n = 0; n < students.get(i).getSubjectStudentCollection().size(); n++)
             {
-                ArrayList<SubjectStudent> tempArray = (ArrayList<SubjectStudent>) students.get(i).getSubjectStudentCollection();
+                List<SubjectStudent> tempArray = (List<SubjectStudent>) students.get(i).getSubjectStudentCollection();
                 for (int o = 0; o < tempArray.size(); o++)
                 {
                     arraySubjects.add(tempArray.get(o).getSubject());
                 }
-                for (int j = 0; j < tempArray.size(); j++)
-                {
-                dtoStudents.add(Assembler.StudentObjectToDTOStudent(students.get(i), arraySubjects));
-                }
-           }
+            }
+            dtoStudents.add(Assembler.StudentObjectToDTOStudent(students.get(i), arraySubjects));
         }
-        // ER IKKE TESTET!!!!
         return dtoStudents;
     }
+    
     @Override
     public DTOStudent getStudent(int id) 
     {
