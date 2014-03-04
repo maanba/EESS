@@ -22,7 +22,7 @@
 
 #pools_list_none{
     width: 280px;
-    height: 500px;
+    height: 475px;
     margin-right: 18px;
     float: left;
 }
@@ -36,10 +36,10 @@
 }
 .pools_list_ab{
     width: 240px;
-    height: 225px;
+    height: 214px;
 }
 #pools_list_a{
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 #pools_button_container{
     float: left;
@@ -47,4 +47,27 @@
 }
 #pools_container{
     height: 500px;
+}
+.pool_Label{
+    font-weight: bold;
+    font-size: 22px;
+    margin-left: 85px;
+}
+#pools_list_students{
+    width: 250px;
+    height: 475px;
+    float: right;
+}
+#pool_Label_students{
+    font-weight: bold;
+    font-size: 22px;
+    float: right;
+    margin-right: 85px;
+}
+#pool_Label_none{
+    font-weight: bold;
+    font-size: 22px;
+    padding-left: 95px;
+    display: block;
+   
 }
