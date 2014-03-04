@@ -116,22 +116,39 @@ public class EESSManagerBean implements EessInterface {
     @Override
     public void setPool(int id, String pool) 
     {
-        
+        Subject subject =  em.find(Subject.class, id);
+        subject.setPool(pool);
+        // ER IKKE TESTET!!!!!!!!!!
+        persist(subject);
     }
     @Override
     public void setSubjectStudent(int studentId, int subjectId, String pool, int priority) 
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Student student = em.find(Student.class, studentId);
+        Subject subject = em.find(Subject.class, subjectId);
+        SubjectStudent subjectStudent =  new SubjectStudent();
+        subjectStudent.setStudent(student);
+        subjectStudent.setSubject(subject);
+        subjectStudent.setPool(pool);
+        subjectStudent.setPriority(priority);
+        // ER IKKE TESTET!!!!!!!!!!
+        persist(subjectStudent);
     }
     @Override
     public void setSubjectTeacher(int teacherId, int subjectId) 
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Teacher teacher = em.find(Teacher.class, teacherId);
+        Subject subject = em.find(Subject.class, subjectId);
+        Query q = em.createQuery("INSERT INTO subject_teacher VALUES (?,?)");
+        q.setParameter(0, teacher);
+        q.setParameter(1, subject);
+        // ER IKKE TESTET!!!!!!!!!!
+        persist(q);
     }
     @Override
     public boolean validateLogin(String username, String password) 
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return !username.equals("") && !password.equals("");
     }
     public void persist(Object object) 
     {
