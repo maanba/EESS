@@ -67,7 +67,6 @@ public class Assembler
         Student student = new Student();
         student.setIdStudent(dtoStudent.getId());
         student.setStudentName(dtoStudent.getName());
-//        List<DTOSubject> subjects = new ArrayList
         Collection<DTOSubject> subject = new ArrayList<>(dtoStudent.getSubjects());
         student.setSubjectStudentCollection(subject);
         return student;
@@ -75,12 +74,22 @@ public class Assembler
 
     public static Subject DTOSubjectToSubjectObject(DTOSubject dtoSubject)
     {
-        return null;
+        Subject subject = new Subject();
+               subject.setIdSubject(dtoSubject.getId());
+               subject.setSubjectName(dtoSubject.getSubjectName());
+               subject.setDescription(dtoSubject.getDescription());
+               subject.setTeacher(dtoSubject.getTeacher());
+               subject.setPool(dtoSubject.getPool());
+               subject.setFirstElectiveRound(dtoSubject.getFirstElectiveRound());
+       return subject;
     }
 
     public static Teacher DTOTeacherToTeacherObject(DTOTeacher dtoTeacher)
     {
-        return null;
+        Teacher teacher = new Teacher();
+               teacher.setIdTeacher(dtoTeacher.getId());
+               teacher.setIntials(dtoTeacher.getIntials());
+       return teacher;
     }
 
 }

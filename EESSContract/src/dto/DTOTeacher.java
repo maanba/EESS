@@ -19,18 +19,18 @@ public class DTOTeacher implements Serializable
     
     private int id;
     private String name;
-    private String initials;
+    private String intials;
     private ArrayList subject;
     
     public DTOTeacher()
     {
     }
     
-    public DTOTeacher (int id, String name, String initials)
+    public DTOTeacher (int id, String name, String intials)
     {
         this.id = id;
         this.name = name;
-        this.initials = initials;
+        this.intials = intials;
     }
 
     public int getId() {
@@ -49,13 +49,13 @@ public class DTOTeacher implements Serializable
         this.name = name;
     }
 
-    public String getInitials()
+    public String getIntials()
     {
-        return initials;
+        return intials;
     }
 
-    public void setInitials(String initials)
+    public void setIntials(String initials)
     {
-        this.initials = initials;
+        this.intials = initials;
     }
 }
