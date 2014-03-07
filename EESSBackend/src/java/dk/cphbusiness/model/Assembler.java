@@ -6,11 +6,6 @@ import dto.DTOTeacher;
 import java.util.ArrayList;
 import java.util.Collection;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author danielthomsen1990
@@ -18,17 +13,18 @@ import java.util.Collection;
 public class Assembler
 {
 
-    public static DTOStudent StudentObjectToDTOStudent(Student student, ArrayList<Subject> subjects)
+    public static DTOStudent StudentObjectToDTOStudent(Student student)
     {
-        ArrayList<DTOSubject> DTOSubjects = new ArrayList();
-        for (Subject sub : subjects)
-        {
-            DTOSubjects.add(SubjectObjectToDTOSubject(sub));
-        } 
-        DTOStudent newDTOStudent
-                = new DTOStudent(student.getIdStudent(),
-                        student.getStudentName(),
-                        DTOSubjects);
+        DTOSubject[] firsts = new DTOSubject[2];
+        DTOSubject[] seconds = new DTOSubject[2];
+        
+        firsts[0] = Assembler.SubjectObjectToDTOSubject(student.getFirstPriorityA());
+        firsts[1] = Assembler.SubjectObjectToDTOSubject(student.getFirstPriorityB());
+        seconds[0] = Assembler.SubjectObjectToDTOSubject(student.getSecondPriorityA());
+        seconds[1] = Assembler.SubjectObjectToDTOSubject(student.getSecondPriorityB());
+        
+        DTOStudent newDTOStudent = new DTOStudent(student.getIdStudent(),
+                student.getStudentName(), firsts, seconds);
         return newDTOStudent;
     }
 
@@ -67,13 +63,6 @@ public class Assembler
         Student student = new Student();
         student.setIdStudent(dtoStudent.getId());
         student.setStudentName(dtoStudent.getName());
-        Collection<DTOSubject> DTOsubject = new ArrayList<>(dtoStudent.getSubjects());
-        ArrayList<Subject> subjects = new ArrayList();
-        for (DTOSubject sub : DTOsubject)
-        {
-            subjects.add(DTOSubjectToSubjectObject(sub));
-        } 
-        student.makeSubjectStudent(subjects);
         return student;
     }
 

@@ -1,4 +1,3 @@
-
 package dk.cphbusiness.commands;
 
 import contract.EessInterface;
@@ -25,7 +24,7 @@ public class CommandFactory implements Factory {
     private static Factory instance;
     private Map<String, Command> commands = new HashMap();
     private EessInterface managerBean = lookupManagerBeanRemote();
-    
+
     private CommandFactory() {
         commands.put("main", new TargetCommand("/main.jsp"));
         commands.put("manage_pools", new ViewPoolsPageCommand("/adm_pools.jsp"));
@@ -33,14 +32,14 @@ public class CommandFactory implements Factory {
         commands.put("toFirstElectionPage", new ToFirstElectionPageCommand(("/first_election.jsp")));
         commands.put("toSecondElectionPage", new ToSecondElectionPageCommand(("/Second_election.jsp")));
     }
-    
-    public static Factory getInstance(){
-        if(instance == null){
+
+    public static Factory getInstance() {
+        if (instance == null) {
             instance = new CommandFactory();
         }
         return instance;
     }
-    
+
     @Override
     public Command getCommand(String command) {
         return commands.get(command);
@@ -55,7 +54,8 @@ public class CommandFactory implements Factory {
     public ArrayList<DTOSubject> getSubjects(){
         return managerBean.getSubjects();
     }
-        private EessInterface lookupManagerBeanRemote() {
+
+    private EessInterface lookupManagerBeanRemote() {
         try {
             Context c = new InitialContext();
             return (EessInterface) c.lookup("java:global/EESSBackend/EESSManagerBean!contract.EessInterface");

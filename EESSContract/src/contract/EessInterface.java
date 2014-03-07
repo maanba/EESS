@@ -33,8 +33,6 @@ public interface EessInterface
     
     public void setPool(int id, String pool);
     
-    public void setSubjectStudent (int studentId, int subjectId, String pool, int priority);
-    
     public void setSubjectTeacher (int teacherId, int subjectId);
     
     public boolean validateLogin (String username, String password);
