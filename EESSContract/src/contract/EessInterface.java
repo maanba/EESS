@@ -36,4 +36,6 @@ public interface EessInterface
     public void setSubjectTeacher (int teacherId, int subjectId);
     
     public boolean validateLogin (String username, String password);
+    
+    public void setPriorities(DTOStudent student);
 }

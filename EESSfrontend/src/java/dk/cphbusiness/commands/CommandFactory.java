@@ -63,4 +63,14 @@ public class CommandFactory implements Factory {
             throw new RuntimeException(ne);
         }
     }
+
+    @Override
+    public DTOStudent getStudent(int id) {
+        return managerBean.getStudent(id);
+    }
+
+    @Override
+    public void setPriorities(DTOStudent student) {
+        managerBean.setPriorities(student);
+    }
 }

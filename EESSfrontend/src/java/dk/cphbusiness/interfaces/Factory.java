@@ -15,4 +15,6 @@ public interface Factory {
     
     ArrayList<DTOSubject> getSubjects();
     ArrayList<DTOStudent> getStudents();
+    DTOStudent getStudent(int id);
+    void setPriorities(DTOStudent student);
 }
