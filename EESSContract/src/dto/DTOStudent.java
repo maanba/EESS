@@ -18,7 +18,7 @@ public class DTOStudent implements Serializable
     private static final long serialVersionUID = 1L;
     private int id;
     private String name;
-    private ArrayList<DTOSubject> subjects;
+    private ArrayList subjects;
     
     public DTOStudent()
     {

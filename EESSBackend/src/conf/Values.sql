@@ -1,7 +1,7 @@
 
 insert into Subject values(1, 'cs', 'dette er csharp', null, null, null);
 insert into Subject values(2, 'python', 'dette er python', 'Torben', 'A', null);
-insert into Subject values(3, 'Android', 'dette er android', 'peter', null, 'Y');
+insert into Subject values(3, 'Android', 'dette er android', 'peter', 'B', 'Y');
 insert into Subject values(4, 'GameDev', 'dette er gamedev', 'tobias', null, 'Y');
 
 insert into Teacher values(100, 'Torben', 'tor');
