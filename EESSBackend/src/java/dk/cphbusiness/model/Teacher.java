@@ -1,29 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package dk.cphbusiness.model;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Ejer
+ * @author Riboe
  */
 @Entity
 @Table(name = "TEACHER")
@@ -46,8 +38,6 @@ public class Teacher implements Serializable {
     @Size(max = 3)
     @Column(name = "INTIALS")
     private String intials;
-    @ManyToMany(mappedBy = "teacherCollection")
-    private Collection<Subject> subjectCollection;
 
     public Teacher() {
     }
@@ -80,15 +70,6 @@ public class Teacher implements Serializable {
         this.intials = intials;
     }
 
-    @XmlTransient
-    public Collection<Subject> getSubjectCollection() {
-        return subjectCollection;
-    }
-
-    public void setSubjectCollection(Collection<Subject> subjectCollection) {
-        this.subjectCollection = subjectCollection;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -113,5 +94,5 @@ public class Teacher implements Serializable {
     public String toString() {
         return "dk.cphbusiness.model.Teacher[ idTeacher=" + idTeacher + " ]";
     }
-    
+
 }
