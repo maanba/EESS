@@ -43,10 +43,12 @@ public class CommandFactory implements Factory {
         return commands.get(command);
     }
     
+    @Override
     public ArrayList<DTOStudent> getStudents(){
         return managerBean.getStudents();
     }
     
+    @Override
     public ArrayList<DTOSubject> getSubjects(){
         return managerBean.getSubjects();
     }

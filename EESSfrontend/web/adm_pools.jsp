@@ -17,19 +17,58 @@
             }
         }
     }
-    
-    function getById(id){
+
+    function getById(id) {
         return document.getElementById(id);
     }
-    
-//    function checkHappiness(){
-//        var studentList = getById("pools_list_students");
-//        
-//        studentList
-//    }
-    
-    
-    
+
+    function init() {
+        checkHappiness();
+        derp();
+    }
+
+    var students = [];
+
+    function initArray() {
+        var studentList = document.getElementById("pools_list_students");
+        for (i = 0; i < studentList.length; i++) {
+            var studentString = studentList[i].value;
+            var student = JSON.parse(studentString);
+            students[i] = student;
+        }
+    }
+
+    function checkHappiness() {
+        var poolA = document.getElementById("pools_list_a");
+        for (i = 0; i < students.length; i++) {
+            var student = students[i];
+            student["happiness"] = 0;
+            console.log(student.name);
+            for (j = 0; j < student.firstPriorities.length; j++) {
+                var subject = student.firstPriorities[j].subjectName;
+                for (l = 0; l < poolA.length; l++) {
+                    console.log(poolA[l].value);
+                }
+            }
+        }
+    }
+
+    function addLoadEvent(func) {
+        var oldonload = window.onload;
+        if (typeof window.onload != 'function') {
+            window.onload = func;
+        } else {
+            window.onload = function() {
+                if (oldonload) {
+                    oldonload();
+                }
+                func();
+            }
+        }
+    }
+
+    addLoadEvent(initArray);
+    addLoadEvent(checkHappiness);
 </script>
 
 <div id="pools_container">
@@ -69,30 +108,31 @@
     </div>
 
     <div style="float: left">
-            <Label class="pool_Label">Pool A</Label>
+        <Label class="pool_Label">Pool A</Label>
         <div>
             <select class="pools_list_ab" id="pools_list_a" multiple="true">
                 <c:forEach var="subject" items="${subjects_a}">
-                    <option>${subject}</option>
+                    <option value="${subject}">${subject}</option>
                 </c:forEach>
             </select>
         </div>
 
-            <label class="pool_Label">Pool B</label>
+        <label class="pool_Label">Pool B</label>
         <div>
             <select class="pools_list_ab" id="pools_list_b" multiple="true">
-                <!--<option>B</option>-->
                 <c:forEach var="subject" items="${subjects_b}">
-                    <option>${subject}</option>
+                    <option value="${subject}">${subject}</option>
                 </c:forEach>
             </select>
         </div>
     </div>
     <div>
         <label id="pool_Label_students">Students</label>
+        <c:set var="count" value="0" scope="page" />
         <select multiple="true" id="pools_list_students">
             <c:forEach var="student" items="${student_list}">
-                <option value="${student}">${student.name}</option>
+                <option value='${json_students[count]}'>${student.name}</option>
+                <c:set var="count" value="${count + 1}" scope="page" />
             </c:forEach>
         </select>
     </div>
