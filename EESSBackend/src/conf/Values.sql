@@ -3,6 +3,10 @@ insert into Subject values(1, 'cs', 'dette er csharp', null, null, null);
 insert into Subject values(2, 'python', 'dette er python', 'Torben', 'A', null);
 insert into Subject values(3, 'Android', 'dette er android', 'peter', 'B', 'Y');
 insert into Subject values(4, 'GameDev', 'dette er gamedev', 'tobias', null, 'Y');
+insert into Subject values(5, 'SysDev', 'dette er sysdev', 'Torben', 'A', 'Y');
+insert into Subject values(6, 'Java', 'dette er Java', 'tobias', 'B', 'Y');
+insert into Subject values(7, 'C++', 'dette er c++', 'Peter', 'A', 'Y');
+insert into Subject values(8, 'IOS', 'dette er IOS', 'tobias', 'B', 'Y');
 
 insert into Teacher values(100, 'Torben', 'tor');
 insert into Teacher values(101, 'Peter', 'pet');
