@@ -18,10 +18,10 @@ public class Assembler
         DTOSubject[] firsts = new DTOSubject[2];
         DTOSubject[] seconds = new DTOSubject[2];
         
-        //firsts[0] = Assembler.SubjectObjectToDTOSubject(student.getFirstPriorityA());
-        //firsts[1] = Assembler.SubjectObjectToDTOSubject(student.getFirstPriorityB());
-        //seconds[0] = Assembler.SubjectObjectToDTOSubject(student.getSecondPriorityA());
-        //seconds[1] = Assembler.SubjectObjectToDTOSubject(student.getSecondPriorityB());
+        firsts[0] = Assembler.SubjectObjectToDTOSubject(student.getFirstPriorityA());
+        firsts[1] = Assembler.SubjectObjectToDTOSubject(student.getFirstPriorityB());
+        seconds[0] = Assembler.SubjectObjectToDTOSubject(student.getSecondPriorityA());
+        seconds[1] = Assembler.SubjectObjectToDTOSubject(student.getSecondPriorityB());
         
         DTOStudent newDTOStudent = new DTOStudent(student.getIdStudent(),
                 student.getStudentName(), firsts, seconds);
