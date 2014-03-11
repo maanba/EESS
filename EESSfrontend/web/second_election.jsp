@@ -5,8 +5,8 @@
 //    window.onload = function check(theForm);
     function saveChecked(id, priority)
     {
-        var result = result + id, ", " + priority + ";";
-                document.getElementById("checkedSecond").value = result;
+        var result = document.getElementById("checked").value + id + "," + priority + ";";
+        document.getElementById("checked").value = result;
     }
 
     function checkA()
@@ -15,14 +15,11 @@
         for (var i = amount; i >= 0; i--)
         {
             var firstACheck = document.getElementById('firstA' + i);
+            var secondACheck = document.getElementById('secondA' + i);
             if (firstACheck.checked)
             {
                 saveChecked(i, 1);
             }
-            else{
-                
-            }
-            var secondACheck = document.getElementById('secondA' + i);
             if (secondACheck.checked)
             {
                 saveChecked(i, 2);
@@ -36,11 +33,11 @@
         for (var i = amount; i >= 0; i--)
         {
             var firstBCheck = document.getElementById('firstB' + i);
+            var secondBCheck = document.getElementById('secondB' + i);
             if (firstBCheck.checked)
             {
                 saveChecked(i, 1);
             }
-            var secondBCheck = document.getElementById('secondB' + i);
             if (secondBCheck.checked)
             {
                 saveChecked(i, 2);
@@ -48,7 +45,7 @@
         }
     }
 
-    function saveAll()
+    function checkAll()
     {
         checkA();
         checkB();
@@ -93,7 +90,7 @@
         </table>
     </form>
 </div>
-<button class="sendSecond" name="command" value="savePriorities" type="submit" onclick="saveAll();">Send mine prioriteter</button>
-<input type="hidden" name="checked" value="" id="checkedSecond">
+<button class="sendSecond" name="command" value="savePriorities" type="submit" onclick="checkAll();">Send mine prioriteter</button>
+<input type="hidden" name="checked" value="" id="checked">
 
 <%@include file="WEB-INF/jspf/footer.jspf" %>
