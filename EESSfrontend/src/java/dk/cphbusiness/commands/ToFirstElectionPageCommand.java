@@ -1,13 +1,17 @@
 package dk.cphbusiness.commands;
 
+import com.sun.xml.bind.util.ListImpl;
 import dk.cphbusiness.interfaces.Factory;
 import dto.DTOSubject;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
-public class ToFirstElectionPageCommand extends TargetCommand {
+public class ToFirstElectionPageCommand extends TargetCommand
+{
 
-    public ToFirstElectionPageCommand(String target) {
+    public ToFirstElectionPageCommand(String target)
+    {
         super(target);
     }
 
