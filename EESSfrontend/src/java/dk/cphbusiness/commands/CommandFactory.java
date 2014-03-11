@@ -30,6 +30,7 @@ public class CommandFactory implements Factory {
         commands.put("manage_pools", new ViewPoolsPageCommand("/adm_pools.jsp"));
         commands.put("savePriorities", new SavePrioritiesCommand(("/main.jsp")));
         commands.put("toFirstElectionPage", new ToFirstElectionPageCommand(("/first_election.jsp")));
+        commands.put("save_pools", new SavePoolsSortingCommand("/main.jsp"));
     }
 
     public static Factory getInstance() {
