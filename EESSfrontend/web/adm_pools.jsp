@@ -39,16 +39,79 @@
     }
 
     function checkHappiness() {
+        console.clear();
         var poolA = document.getElementById("pools_list_a");
+        var poolB = document.getElementById("pools_list_b");
+        var listStudents = document.getElementById("pools_list_students");
         for (i = 0; i < students.length; i++) {
             var student = students[i];
+            var hasSubjectInA = false;
+            var hasSubjectInB = false;
             student["happiness"] = 0;
-            console.log(student.name);
             for (j = 0; j < student.firstPriorities.length; j++) {
                 var subject = student.firstPriorities[j].subjectName;
                 for (l = 0; l < poolA.length; l++) {
-                    console.log(poolA[l].value);
+                    if (hasSubjectInA == false) {
+                        var poolSubject = poolA[l].value;
+                        if (poolSubject.substring(0, subject.length) == subject) {
+                            student["happiness"] = student["happiness"] + 50;
+                            hasSubjectInA = true;
+                        }
+                    }
                 }
+            }
+            for (j = 0; j < student.secondPriorities.length; j++) {
+                var subject = student.secondPriorities[j].subjectName;
+                for (l = 0; l < poolA.length; l++) {
+                    if (hasSubjectInA == false) {
+                        var poolSubject = poolA[l].value;
+                        if (poolSubject.substring(0, subject.length) == subject) {
+                            student["happiness"] = student["happiness"] + 25;
+                            hasSubjectInA = true;
+                        }
+                    }
+                }
+            }
+            // FOR POOL B:
+            for (j = 0; j < student.secondPriorities.length; j++) {
+                var subject = student.secondPriorities[j].subjectName;
+                for (l = 0; l < poolB.length; l++) {
+                    if (hasSubjectInB == false) {
+                        var poolSubject = poolB[l].value;
+                        if (poolSubject.substring(0, subject.length) == subject) {
+                            student["happiness"] = student["happiness"] + 50;
+                            hasSubjectInB = true;
+                        }
+                    }
+                }
+            }
+            for (j = 0; j < student.secondPriorities.length; j++) {
+                var subject = student.secondPriorities[j].subjectName;
+                for (l = 0; l < poolB.length; l++) {
+                    if (hasSubjectInB == false) {
+                        var poolSubject = poolB[l].value;
+                        if (poolSubject.substring(0, subject.length) == subject) {
+                            student["happiness"] = student["happiness"] + 25;
+                            hasSubjectInB = true;
+                        }
+                    }
+                }
+            }
+        }
+        students.sort(function(a, b) {
+            return a.happiness - b.happiness;
+        });
+        for (i = 0; i < students.length; i++) {
+            var student = students[i];
+            var option = listStudents[i];
+            option.text = student.name;
+            option.value = student;
+            if (student.happiness >= 75) {
+                option.style.backgroundColor = "#00FF00";
+            } else if (student.happiness >= 50) {
+                option.style.backgroundColor = "yellow";
+            } else {
+                option.style.backgroundColor = "#FF1313";
             }
         }
     }
@@ -66,6 +129,20 @@
             }
         }
     }
+
+    function generateHiddenFields() {
+        var form = document.forms['form_save_pools'];
+        for (i = 0; i < students.length; i++) {
+            var student = students[i];
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = "student";
+            input.value = JSON.stringify(student);
+            form.appendChild(input);
+        }
+        return true;
+    }
+
 
     addLoadEvent(initArray);
     addLoadEvent(checkHappiness);
@@ -86,9 +163,11 @@
         <br/>
         <br/>
         <div id="button_a_container">
-            <input type="button" class="pool_button_arrow" value="==>>" onclick="moveBetweenLists(getById('pools_list_none'), getById('pools_list_a'));" />
+            <input type="button" class="pool_button_arrow" value="==>>" onclick="moveBetweenLists(getById('pools_list_none'), getById('pools_list_a'));
+                    checkHappiness();" />
             <div>
-                <input type="button" class="pool_button_arrow" value="<<==" onclick="moveBetweenLists(getById('pools_list_a'), getById('pools_list_none'));" />
+                <input type="button" class="pool_button_arrow" value="<<==" onclick="moveBetweenLists(getById('pools_list_a'), getById('pools_list_none'));
+                        checkHappiness();" />
             </div>
         </div>
         <br/>
@@ -99,9 +178,11 @@
         <br/>
         <br/>
         <div>
-            <input type="button" class="pool_button_arrow" value="==>>" onclick="moveBetweenLists(getById('pools_list_none'), getById('pools_list_b'));" />
+            <input type="button" class="pool_button_arrow" value="==>>" onclick="moveBetweenLists(getById('pools_list_none'), getById('pools_list_b'));
+                    checkHappiness();" />
             <div>
-                <input type="button" class="pool_button_arrow" value="<<==" onclick="moveBetweenLists(getById('pools_list_b'), getById('pools_list_none'));" />
+                <input type="button" class="pool_button_arrow" value="<<==" onclick="moveBetweenLists(getById('pools_list_b'), getById('pools_list_none'));
+                        checkHappiness();" />
             </div>
         </div>
 
@@ -135,6 +216,11 @@
                 <c:set var="count" value="${count + 1}" scope="page" />
             </c:forEach>
         </select>
+        <div>
+            <form id="form_save_pools" method="post" onsubmit="return generateHiddenFields();" action="Controller?command=save_pools">
+                <input type="submit" class="button_std" value="Submit" />
+            </form>
+        </div>
     </div>
 </div>
 

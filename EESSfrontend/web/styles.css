@@ -46,7 +46,7 @@
     margin-right: 18px;
 }
 #pools_container{
-    height: 500px;
+    height: 540px;
 }
 .pool_Label{
     font-weight: bold;
@@ -56,7 +56,8 @@
 #pools_list_students{
     width: 250px;
     height: 475px;
-    float: right;
+    float: none;
+    margin-left: 44px;
 }
 #pool_Label_students{
     font-weight: bold;
@@ -70,8 +71,9 @@
     padding-left: 95px;
     display: block;
 }
-#sendSecond{
-    border-color: red;
-    border-style: solid;
-    border-width: 2px;
+.button_std{
+    width: 250px;
+    height: 28px;
+    float: right;
+    margin-top: 9px;
 }
