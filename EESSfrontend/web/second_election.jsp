@@ -6,7 +6,7 @@
     function saveChecked(id, priority)
     {
         var result = result + id, ", " + priority + ";";
-                document.getElementById("checked").value = result;
+                document.getElementById("checkedSecond").value = result;
     }
 
     function checkA()
@@ -57,14 +57,14 @@
 </p>
 </div>
 <div>
-    <form name="tabel_formA" action="Controller" method="POST" style="float: left">
-        <table name="" style="width:300px">
+    <form name="tabel_formA" action="Controller" method="POST">
+        <table name="" style="width: 300px; float: left;">
             <tr>
                 <td colspan="4">Pulje A</td>
             </tr>
             <c:forEach var="subject" items="${poolA}">
                 <tr>
-                    <td">${subject.subjectName}</td>
+                    <td>${subject.subjectName}</td>
                     <td><input type="checkbox" name="${subject.id}_1" value="first" id="first${countA}"></td>
                     <td><input type="checkbox" name="${subject.id}_2" value="second" id="second${countA}"></td>
                 <c:set var="count" value="${countA + 1}" scope="page"/>
@@ -72,8 +72,8 @@
             </c:forEach>
         </table>
     </form>
-    <form name="tabel_formB" action="Controller" method="POST" style="float: left">
-        <table name="" style="width:300px">
+    <form name="tabel_formB" action="Controller" method="POST">
+        <table name="" style="width: 300px">
             <tr>
                 <td colspan="4">Pulje B</td>
             </tr>
@@ -87,7 +87,9 @@
             </c:forEach>
         </table>
     </form>
+    <br>
 </div>
-
+<button class="sendSecond" name="command" value="savePriorities" type="submit" onclick="checkAll();">Send mine prioriteter</button>
+<input type="text" name="checked" value="" id="checkedSecond">
 
 <%@include file="WEB-INF/jspf/footer.jspf" %>
