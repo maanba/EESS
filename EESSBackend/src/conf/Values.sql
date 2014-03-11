@@ -8,7 +8,7 @@ insert into Teacher values(100, 'Torben', 'tor');
 insert into Teacher values(101, 'Peter', 'pet');
 insert into Teacher values(102, 'Anders', 'and');
 
-insert into Student values(200, 'jonh hitler', 1, 4, 2, 3);
+insert into Student values(200, 'jonh hitler', null, null, null, null);
 insert into Student values(201, 'Monty mus', 4, 2, 1, 3);
 insert into Student values(202, 'James Bond', 2, 1, 3, 4);
 

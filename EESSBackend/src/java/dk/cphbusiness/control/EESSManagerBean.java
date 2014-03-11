@@ -84,18 +84,12 @@ public class EESSManagerBean implements EessInterface {
 
     @Override
     public DTOStudent getStudent(int id) {
-//        Query query = em.createNamedQuery("Student.findByIdStudent");
-//        query.setParameter("id_student", id);
-//        Student student = (Student) query.getSingleResult();
-//        ArrayList<SubjectStudent> subjects = (ArrayList<SubjectStudent>) student.getSubjectStudentCollection();
-//        ArrayList<Subject> arrSubjects = new ArrayList<>();
-//        for (int i = 0; i < subjects.size(); i++) {
-//            arrSubjects.add(subjects.get(i).getSubject());
-//        }
-//        DTOStudent dtoStudent = Assembler.StudentObjectToDTOStudent(student, arrSubjects);
-//        // ER IKKE TESTET!!!!!!!
-//        return dtoStudent;
-        return null;
+        Query query = em.createNamedQuery("Student.findByIdStudent");
+        query.setParameter("idStudent", id);
+        Student student = (Student) query.getSingleResult();
+        DTOStudent dtoStudent = Assembler.StudentObjectToDTOStudent(student);
+        // ER IKKE TESTET!!!!!!!
+        return dtoStudent;
     }
 
     @Override
@@ -173,6 +167,22 @@ public class EESSManagerBean implements EessInterface {
     @Override
     public void setPriorities(DTOStudent dtoStudent) {
         Student student = em.find(Student.class, dtoStudent.getId());
+        DTOSubject[] firstPriorities = dtoStudent.getFirstPriorities();
+        DTOSubject[] secondPriorities = dtoStudent.getSecondPriorities();
+        for (int i = 0 ;i < firstPriorities.length ; i++){
+            if (i == 0){
+            student.setFirstPriorityA(Assembler.DTOSubjectToSubjectObject(firstPriorities[i]));
+            } else {
+            student.setFirstPriorityB(Assembler.DTOSubjectToSubjectObject(firstPriorities[i]));
+            }
+        }
+        for (int i = 0 ;i < secondPriorities.length ; i++){
+            if (i == 0){
+            student.setSecondPriorityA(Assembler.DTOSubjectToSubjectObject(secondPriorities[i]));
+            } else {
+            student.setSecondPriorityB(Assembler.DTOSubjectToSubjectObject(secondPriorities[i]));
+            }
+        }
         // ER IKKE TESTET!!!!!!!!!!
         persist(student);
     }
