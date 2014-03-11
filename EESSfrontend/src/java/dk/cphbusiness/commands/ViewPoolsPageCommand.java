@@ -28,18 +28,21 @@ public class ViewPoolsPageCommand extends TargetCommand
         List listnone = new ArrayList();
         List lista = new ArrayList();
         List listb = new ArrayList();
-
+        Gson g = new Gson();
         for (DTOSubject subject : list)
         {
             if ("A".equals(subject.getPool()))
             {
-                lista.add(subject.getSubjectName() + " - " + subject.getTeacher() + " - " + subject.getFirstElectiveRound());
+//                lista.add(subject.getSubjectName() + " - " + subject.getTeacher() + " - " + subject.getFirstElectiveRound());
+                lista.add(g.toJson(subject));
             } else if ("B".equals(subject.getPool()))
             {
-                listb.add(subject.getSubjectName() + " - " + subject.getTeacher() + " - " + subject.getFirstElectiveRound());
+//                listb.add(subject.getSubjectName() + " - " + subject.getTeacher() + " - " + subject.getFirstElectiveRound());
+                listb.add(g.toJson(subject));
             } else
             {
-                listnone.add(subject.getSubjectName() + " - " + subject.getTeacher() + " - " + subject.getFirstElectiveRound());
+//                listnone.add(subject.getSubjectName() + " - " + subject.getTeacher() + " - " + subject.getFirstElectiveRound());
+                  listnone.add(g.toJson(subject));  
             }
         }
         request.setAttribute("subjects_none", listnone);
@@ -48,11 +51,11 @@ public class ViewPoolsPageCommand extends TargetCommand
         ArrayList<DTOStudent> students = instance.getStudents();
         request.setAttribute("student_list", students);
         ArrayList<String> jsonStudents = new ArrayList();
-        Gson g = new Gson();
         for (DTOStudent student : students) {
             String json = g.toJson(student);
             jsonStudents.add(json);
         }
+        System.out.println("JOHN " + students.get(0).getFirstPriorities()[0].getSubjectName());
         request.setAttribute("json_students", jsonStudents);
         return super.execute(request);
     }
