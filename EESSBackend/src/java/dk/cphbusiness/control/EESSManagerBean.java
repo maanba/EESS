@@ -186,4 +186,14 @@ public class EESSManagerBean implements EessInterface {
         // ER IKKE TESTET!!!!!!!!!!
         persist(student);
     }
+
+    @Override
+    public void setSubjects(ArrayList<DTOSubject> subjects)
+    {
+        for (DTOSubject dTOSubject : subjects)
+        {
+            Subject subject = Assembler.DTOSubjectToSubjectObject(dTOSubject);
+            em.merge(subject);
+        }
+    }
 }

@@ -75,4 +75,10 @@ public class CommandFactory implements Factory {
     public void setPriorities(DTOStudent student) {
         managerBean.setPriorities(student);
     }
+
+    @Override
+    public void setSubjects(ArrayList<DTOSubject> subjects)
+    {
+        managerBean.setSubjects(subjects);
+    }
 }
