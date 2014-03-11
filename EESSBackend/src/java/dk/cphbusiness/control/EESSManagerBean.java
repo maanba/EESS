@@ -169,4 +169,11 @@ public class EESSManagerBean implements EessInterface {
     public void persist(Object object) {
         em.persist(object);
     }
+
+    @Override
+    public void setPriorities(DTOStudent dtoStudent) {
+        Student student = em.find(Student.class, dtoStudent.getId());
+        // ER IKKE TESTET!!!!!!!!!!
+        persist(student);
+    }
 }

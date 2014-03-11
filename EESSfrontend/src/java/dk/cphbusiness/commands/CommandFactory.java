@@ -30,6 +30,7 @@ public class CommandFactory implements Factory {
         commands.put("manage_pools", new ViewPoolsPageCommand("/adm_pools.jsp"));
         commands.put("savePriorities", new SavePrioritiesCommand(("/main.jsp")));
         commands.put("toFirstElectionPage", new ToFirstElectionPageCommand(("/first_election.jsp")));
+        commands.put("toSecondElectionPage", new ToSecondElectionPageCommand(("/second_election.jsp")));
         commands.put("save_pools", new SavePoolsSortingCommand("/main.jsp"));
     }
 
@@ -63,5 +64,15 @@ public class CommandFactory implements Factory {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);
         }
+    }
+
+    @Override
+    public DTOStudent getStudent(int id) {
+        return managerBean.getStudent(id);
+    }
+
+    @Override
+    public void setPriorities(DTOStudent student) {
+        managerBean.setPriorities(student);
     }
 }

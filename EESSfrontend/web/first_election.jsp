@@ -1,10 +1,10 @@
 <%@include file="WEB-INF/jspf/header.jspf" %>
 <c:set var="count" value="0" scope="page"/>
-<script>
-//    window.onload = function check(theForm);
+<script type="text/javascript">
+    //window.onload = function check();
     function saveChecked(id, priority)
     {
-        var result = result + id, ", " + priority + ";";
+        var result = document.getElementById("checked").value + id + "," + priority + ";";
         document.getElementById("checked").value = result;
     }
     
@@ -47,9 +47,9 @@
         </tr>
     </c:forEach>
 </table>
-    <input type="hidden" name="checked" value="checked" id="checked">
+    <input type="text" name="checked" value="" id="checked">
     <div>
-        <button name="command" value="savePriorities" type="submit" onclick="check()">Send mine prioriteter</button>
+        <button name="command" value="savePriorities" type="submit" onclick="check();">Send mine prioriteter</button>
     </div>
 </form>
 
