@@ -31,6 +31,7 @@ public class CommandFactory implements Factory {
         commands.put("savePriorities", new SavePrioritiesCommand(("/main.jsp")));
         commands.put("toFirstElectionPage", new ToFirstElectionPageCommand(("/first_election.jsp")));
         commands.put("toSecondElectionPage", new ToSecondElectionPageCommand(("/second_election.jsp")));
+        commands.put("save_pools", new SavePoolsSortingCommand("/main.jsp"));
     }
 
     public static Factory getInstance() {
@@ -73,5 +74,11 @@ public class CommandFactory implements Factory {
     @Override
     public void setPriorities(DTOStudent student) {
         managerBean.setPriorities(student);
+    }
+
+    @Override
+    public void setSubjects(ArrayList<DTOSubject> subjects)
+    {
+        managerBean.setSubjects(subjects);
     }
 }

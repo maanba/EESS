@@ -1,4 +1,4 @@
--- drop table subject_student;
+--drop table subject_student;
 drop table subject_teacher;
 drop table Student;
 drop table Teacher;

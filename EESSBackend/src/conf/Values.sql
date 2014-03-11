@@ -1,4 +1,3 @@
-
 insert into Subject values(1, 'cs', 'dette er csharp', null, null, null);
 insert into Subject values(2, 'python', 'dette er python', 'Torben', 'A', null);
 insert into Subject values(3, 'Android', 'dette er android', 'peter', 'B', 'Y');

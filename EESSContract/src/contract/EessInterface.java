@@ -38,4 +38,6 @@ public interface EessInterface
     public boolean validateLogin (String username, String password);
     
     public void setPriorities(DTOStudent student);
+    
+    public void setSubjects(ArrayList<DTOSubject> subjects);
 }
