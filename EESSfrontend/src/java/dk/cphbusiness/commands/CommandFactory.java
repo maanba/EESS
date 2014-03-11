@@ -44,14 +44,14 @@ public class CommandFactory implements Factory {
     public Command getCommand(String command) {
         return commands.get(command);
     }
-    
+
     @Override
-    public ArrayList<DTOStudent> getStudents(){
+    public ArrayList<DTOStudent> getStudents() {
         return managerBean.getStudents();
     }
-    
+
     @Override
-    public ArrayList<DTOSubject> getSubjects(){
+    public ArrayList<DTOSubject> getSubjects() {
         return managerBean.getSubjects();
     }
 
@@ -63,5 +63,15 @@ public class CommandFactory implements Factory {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);
         }
+    }
+
+    @Override
+    public DTOStudent getStudent(int id) {
+        return managerBean.getStudent(id);
+    }
+
+    @Override
+    public void setPriorities(DTOStudent student) {
+        managerBean.setPriorities(student);
     }
 }
