@@ -12,43 +12,67 @@
     function checkA()
     {
         var amount = ${poolaamount} - 1;
+        var numberOfCheckedA = 0;
+        var numberOfCheckedB = 0;
         for (var i = amount; i >= 0; i--)
         {
             var firstACheck = document.getElementById('firstA' + i);
             var secondACheck = document.getElementById('secondA' + i);
-            if (firstACheck.checked)
-            {
+            if (firstACheck.checked){
+                console.log(firstACheck);
                 saveChecked(i, 1);
+                numberOfCheckedA++;
             }
-            if (secondACheck.checked)
-            {
+            if (secondACheck.checked){
                 saveChecked(i, 2);
+                numberOfCheckedB++;
             }
+        }
+        console.log(numberOfCheckedA + " ," + numberOfCheckedB);
+        if ((numberOfCheckedA === 1) && (numberOfCheckedB === 1)){
+            return true;
+        } else {
+            return false;
         }
     }
 
     function checkB()
     {
         var amount = ${poolbamount} - 1;
+        var numberOfCheckedA = 0;
+        var numberOfCheckedB = 0;
         for (var i = amount; i >= 0; i--)
         {
             var firstBCheck = document.getElementById('firstB' + i);
             var secondBCheck = document.getElementById('secondB' + i);
-            if (firstBCheck.checked)
-            {
+            if (firstBCheck.checked){
                 saveChecked(i, 1);
+                numberOfCheckedA++;
             }
-            if (secondBCheck.checked)
-            {
+            if (secondBCheck.checked){
                 saveChecked(i, 2);
+                numberOfCheckedB++;
             }
+        }
+        console.log(numberOfCheckedA + " ," + numberOfCheckedB);
+        if ((numberOfCheckedA === 1) && (numberOfCheckedB === 1)){
+            return true;
+        } else {
+            return false;
         }
     }
 
     function checkAll()
     {
-        checkA();
-        checkB();
+        var boolA = checkA();
+        var boolB = checkB();
+        console.log(boolA + " ," + boolB);
+        if (boolA && boolB){
+            return true;
+        } else {
+            return false;
+        }
+        
     }
 </script>
 
@@ -69,7 +93,7 @@
                     <td>${subject.subjectName}</td>
                     <td><input type="checkbox" name="${subject.id}_1" value="firstA" id="firstA${countA}"></td>
                     <td><input type="checkbox" name="${subject.id}_2" value="secondA" id="secondA${countA}"></td>
-                <c:set var="countA2" value="${countA + 1}" scope="page"/>
+                <c:set var="countA" value="${countA + 1}" scope="page"/>
                 </tr>
             </c:forEach>
         </table>
@@ -84,13 +108,15 @@
                     <td>${subject.subjectName}</td>
                     <td><input type="checkbox" name="${subject.id}_1" value="firstB" id="firstB${countB}"></td>
                     <td><input type="checkbox" name="${subject.id}_2" value="secondB" id="secondB${countB}"></td>
-                <c:set var="countB2" value="${countB + 1}" scope="page"/>
+                <c:set var="countB" value="${countB + 1}" scope="page"/>
                 </tr>
             </c:forEach>
         </table>
     </form>
 </div>
-<button class="sendSecond" name="command" value="savePriorities" type="submit" onclick="checkAll();">Send mine prioriteter</button>
-<input type="hidden" name="checked" value="" id="checked">
+<form onsubmit="return checkAll();" method="POST">
+    <button class="sendSecond" name="command" value="savePriorities" type="submit"/>Save priorities</button>
+    <input type="hidden" name="checked" value="" id="checked">
+</form>
 
 <%@include file="WEB-INF/jspf/footer.jspf" %>

@@ -3,7 +3,6 @@ package dk.cphbusiness.commands;
 import dk.cphbusiness.interfaces.Factory;
 import dto.DTOStudent;
 import dto.DTOSubject;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,6 +16,7 @@ public class SavePrioritiesCommand extends TargetCommand {
     public String execute(HttpServletRequest request) {
         Factory instance = CommandFactory.getInstance();
         List<DTOSubject> list = instance.getSubjects();
+        System.out.println("hej" + request.getParameter("checked"));
         String[] checked = request.getParameter("checked").split(";");
         DTOStudent student = instance.getStudent(200);
 
