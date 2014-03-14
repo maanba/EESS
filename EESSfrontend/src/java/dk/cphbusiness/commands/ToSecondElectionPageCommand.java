@@ -45,6 +45,7 @@ public class ToSecondElectionPageCommand extends TargetCommand
                 }
             }
         }
+        
         request.setAttribute("poolA", poolA);
         request.setAttribute("poolB", poolB);
         request.setAttribute("poolaamount", poolA.size());
