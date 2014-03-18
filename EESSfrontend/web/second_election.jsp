@@ -3,9 +3,9 @@
 <c:set var="countB" value="0" scope="page"/>
 <script>
 //    window.onload = function check(theForm);
-    function saveChecked(id, priority)
+    function saveChecked(id, priority, pool)
     {
-        var result = document.getElementById("checked").value + id + "," + priority + ";";
+        var result = document.getElementById("checked").value + id + "," + priority + "," + pool + ";";
         document.getElementById("checked").value = result;
     }
 
@@ -14,17 +14,15 @@
         var amount = ${poolaamount} - 1;
         var numberOfCheckedA = 0;
         var numberOfCheckedB = 0;
-        for (var i = amount; i >= 0; i--)
-        {
+        for (var i = amount; i >= 0; i--){
             var firstACheck = document.getElementById('firstA' + i);
             var secondACheck = document.getElementById('secondA' + i);
             if (firstACheck.checked){
-                console.log(firstACheck);
-                saveChecked(i, 1);
+                saveChecked(firstACheck.name, 1, "A");
                 numberOfCheckedA++;
             }
             if (secondACheck.checked){
-                saveChecked(i, 2);
+                saveChecked(secondACheck.name, 2, "A");
                 numberOfCheckedB++;
             }
         }
@@ -46,11 +44,11 @@
             var firstBCheck = document.getElementById('firstB' + i);
             var secondBCheck = document.getElementById('secondB' + i);
             if (firstBCheck.checked){
-                saveChecked(i, 1);
+                saveChecked(firstBCheck.name, 1, "B");
                 numberOfCheckedA++;
             }
             if (secondBCheck.checked){
-                saveChecked(i, 2);
+                saveChecked(secondBCheck.name, 2, "B");
                 numberOfCheckedB++;
             }
         }
@@ -91,8 +89,8 @@
             <c:forEach var="subject" items="${poolA}">
                 <tr>
                     <td>${subject.subjectName}</td>
-                    <td><input type="checkbox" name="${subject.id}_1" value="firstA" id="firstA${countA}"></td>
-                    <td><input type="checkbox" name="${subject.id}_2" value="secondA" id="secondA${countA}"></td>
+                    <td><input type="checkbox" name="${subject.id}" value="firstA" id="firstA${countA}"></td>
+                    <td><input type="checkbox" name="${subject.id}" value="secondA" id="secondA${countA}"></td>
                 <c:set var="countA" value="${countA + 1}" scope="page"/>
                 </tr>
             </c:forEach>
@@ -106,8 +104,8 @@
             <c:forEach var="subject" items="${poolB}">
                 <tr>
                     <td>${subject.subjectName}</td>
-                    <td><input type="checkbox" name="${subject.id}_1" value="firstB" id="firstB${countB}"></td>
-                    <td><input type="checkbox" name="${subject.id}_2" value="secondB" id="secondB${countB}"></td>
+                    <td><input type="checkbox" name="${subject.id}" value="firstB" id="firstB${countB}"></td>
+                    <td><input type="checkbox" name="${subject.id}" value="secondB" id="secondB${countB}"></td>
                 <c:set var="countB" value="${countB + 1}" scope="page"/>
                 </tr>
             </c:forEach>
