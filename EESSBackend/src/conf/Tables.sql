@@ -10,7 +10,8 @@ subject_name varchar(30) not null,
 description varchar(255) not null,
 teacher varchar(30),
 pool varchar(1),
-first_elective_round varchar(1)
+first_elective_round varchar(1),
+is_final varchar(1)
 );
 
 create table Teacher (
@@ -26,10 +27,14 @@ first_priority_a int,
 first_priority_b int,
 second_priority_a int,
 second_priority_b int,
+final_a int,
+final_b int,
 constraint fk_sub_one_a  foreign key(first_priority_a) references Subject(id_subject),
 constraint fk_sub_one_b  foreign key(first_priority_b) references Subject(id_subject),
 constraint fk_sub_two_a  foreign key(second_priority_a) references Subject(id_subject),
-constraint fk_sub_two_b  foreign key(second_priority_b) references Subject(id_subject)
+constraint fk_sub_two_b  foreign key(second_priority_b) references Subject(id_subject),
+constraint fk_final_a  foreign key(final_a) references Subject(id_subject),
+constraint fk_final_b  foreign key(final_b) references Subject(id_subject)
 );
 
 create table subject_teacher (

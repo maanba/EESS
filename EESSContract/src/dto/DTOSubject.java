@@ -21,19 +21,29 @@ public class DTOSubject implements Serializable
     private String teacher;
     private String pool;
     private String firstElectiveRound;
+    private String isFinal;
    
     
     public DTOSubject()
     {
     }
 
-    public DTOSubject(int id, String subjectName, String description, String teacher, String pool, String firstElectiveRound) {
+    public DTOSubject(int id, String subjectName, String description, String teacher, String pool, String firstElectiveRound, String isFinal) {
         this.id = id;
         this.subjectName = subjectName;
         this.description = description;
         this.teacher = teacher;
         this.pool = pool;
         this.firstElectiveRound = firstElectiveRound;
+        this.isFinal = isFinal;
+    }
+
+    public String getIsFinal() {
+        return isFinal;
+    }
+
+    public void setIsFinal(String isFinal) {
+        this.isFinal = isFinal;
     }
 
     public int getId() {

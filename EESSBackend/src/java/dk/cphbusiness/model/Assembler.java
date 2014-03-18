@@ -24,7 +24,7 @@ public class Assembler
         seconds[1] = Assembler.SubjectObjectToDTOSubject(student.getSecondPriorityB());
         
         DTOStudent newDTOStudent = new DTOStudent(student.getIdStudent(),
-                student.getStudentName(), firsts, seconds);
+                student.getStudentName(), firsts, seconds, student.getFinalA().getIdSubject(), student.getFinalB().getIdSubject());
         return newDTOStudent;
     }
 
@@ -36,7 +36,8 @@ public class Assembler
                         subject.getDescription(),
                         subject.getTeacher(),
                         subject.getPool(),
-                        subject.getFirstElectiveRound());
+                        subject.getFirstElectiveRound(),
+                        subject.getIsFinal());
         return newDTOSubject;
     }
 
@@ -75,6 +76,7 @@ public class Assembler
                subject.setTeacher(dtoSubject.getTeacher());
                subject.setPool(dtoSubject.getPool());
                subject.setFirstElectiveRound(dtoSubject.getFirstElectiveRound());
+               subject.setIsFinal(dtoSubject.getIsFinal());
        return subject;
     }
 

@@ -19,6 +19,8 @@ public class DTOStudent implements Serializable
     private String name;
     private DTOSubject[] firstPriorities;
     private DTOSubject[] secondPriorities;
+    private int finalA;
+    private int finalB;
     
     public DTOStudent()
     {
@@ -37,6 +39,31 @@ public class DTOStudent implements Serializable
         this.name = name;
         this.firstPriorities = firstPriorities;
         this.secondPriorities = secondPriorities;
+    }
+
+    public DTOStudent(int id, String name, DTOSubject[] firstPriorities, DTOSubject[] secondPriorities, int finalA, int finalB) {
+        this.id = id;
+        this.name = name;
+        this.firstPriorities = firstPriorities;
+        this.secondPriorities = secondPriorities;
+        this.finalA = finalA;
+        this.finalB = finalB;
+    }
+
+    public int getFinalA() {
+        return finalA;
+    }
+
+    public void setFinalA(int finalA) {
+        this.finalA = finalA;
+    }
+
+    public int getFinalB() {
+        return finalB;
+    }
+
+    public void setFinalB(int finalB) {
+        this.finalB = finalB;
     }
 
     public DTOSubject[] getFirstPriorities() {
