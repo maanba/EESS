@@ -3,7 +3,6 @@ package dk.cphbusiness.commands;
 import dk.cphbusiness.interfaces.Factory;
 import dto.DTOStudent;
 import dto.DTOSubject;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,8 +14,10 @@ public class SavePrioritiesCommand extends TargetCommand {
 
     @Override
     public String execute(HttpServletRequest request) {
+        // skal gøres at den gemmer pool, fra second election og en slags null værdi i pool fra first election
         Factory instance = CommandFactory.getInstance();
         List<DTOSubject> list = instance.getSubjects();
+        System.out.println("hej" + request.getParameter("checked"));
         String[] checked = request.getParameter("checked").split(";");
         DTOStudent student = instance.getStudent(200);
 
@@ -25,11 +26,14 @@ public class SavePrioritiesCommand extends TargetCommand {
         for (int n = 0; n < list.size(); n++) {
             for (int i = 0; i < checked.length; i++) {
                 String[] temp = checked[i].split(",");
-                if (temp[0].equals(n + "")) {
+                if (temp[0].equals(list.get(n).getId() + "")) {
                     System.out.println(temp[1]);
                     if (temp[1].equals(1 + "")) {
                         if (firstPriorities[0] == null) {
                             firstPriorities[0] = list.get(n);
+                            if (temp[2].equals("")){
+                                
+                            }
                         } else {
                             firstPriorities[1] = list.get(n);
                         }

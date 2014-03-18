@@ -3,50 +3,74 @@
 <c:set var="countB" value="0" scope="page"/>
 <script>
 //    window.onload = function check(theForm);
-    function saveChecked(id, priority)
+    function saveChecked(id, priority, pool)
     {
-        var result = result + id, ", " + priority + ";";
-                document.getElementById("checkedSecond").value = result;
+        var result = document.getElementById("checked").value + id + "," + priority + "," + pool + ";";
+        document.getElementById("checked").value = result;
     }
 
     function checkA()
     {
-        console.log(${poolaamount});
-        console.log(${countA});
         var amount = ${poolaamount} - 1;
-        for (var i = amount; i >= 0; i--)
-        {
-            console.log("hej fra din forløkke");
-            var firstCheck = document.getElementById('first' + i);
-            if (firstCheck.checked)
-            {
-                saveChecked(i, 1);
-                console.log("YAY! FirstCheck == checked");
+        var numberOfCheckedA = 0;
+        var numberOfCheckedB = 0;
+        for (var i = amount; i >= 0; i--){
+            var firstACheck = document.getElementById('firstA' + i);
+            var secondACheck = document.getElementById('secondA' + i);
+            if (firstACheck.checked){
+                saveChecked(firstACheck.name, 1, "A");
+                numberOfCheckedA++;
             }
+            if (secondACheck.checked){
+                saveChecked(secondACheck.name, 2, "A");
+                numberOfCheckedB++;
+            }
+        }
+        console.log(numberOfCheckedA + " ," + numberOfCheckedB);
+        if ((numberOfCheckedA === 1) && (numberOfCheckedB === 1)){
+            return true;
+        } else {
+            return false;
         }
     }
 
     function checkB()
     {
-        console.log(${poolbamount});
-        console.log(${countB});
-        var amount = ${poolaamount} - 1;
+        var amount = ${poolbamount} - 1;
+        var numberOfCheckedA = 0;
+        var numberOfCheckedB = 0;
         for (var i = amount; i >= 0; i--)
         {
-            console.log("hej fra din forløkke");
-            var firstCheck = document.getElementById('first' + i);
-            if (firstCheck.checked)
-            {
-                saveChecked(i, 1);
-                console.log("YAY! FirstCheck == checked");
+            var firstBCheck = document.getElementById('firstB' + i);
+            var secondBCheck = document.getElementById('secondB' + i);
+            if (firstBCheck.checked){
+                saveChecked(firstBCheck.name, 1, "B");
+                numberOfCheckedA++;
             }
+            if (secondBCheck.checked){
+                saveChecked(secondBCheck.name, 2, "B");
+                numberOfCheckedB++;
+            }
+        }
+        console.log(numberOfCheckedA + " ," + numberOfCheckedB);
+        if ((numberOfCheckedA === 1) && (numberOfCheckedB === 1)){
+            return true;
+        } else {
+            return false;
         }
     }
 
     function checkAll()
     {
-        checkA();
-        checkB();
+        var boolA = checkA();
+        var boolB = checkB();
+        console.log(boolA + " ," + boolB);
+        if (boolA && boolB){
+            return true;
+        } else {
+            return false;
+        }
+        
     }
 </script>
 
@@ -65,31 +89,32 @@
             <c:forEach var="subject" items="${poolA}">
                 <tr>
                     <td>${subject.subjectName}</td>
-                    <td><input type="checkbox" name="${subject.id}_1" value="first" id="first${countA}"></td>
-                    <td><input type="checkbox" name="${subject.id}_2" value="second" id="second${countA}"></td>
-                <c:set var="count" value="${countA + 1}" scope="page"/>
+                    <td><input type="checkbox" name="${subject.id}" value="firstA" id="firstA${countA}"></td>
+                    <td><input type="checkbox" name="${subject.id}" value="secondA" id="secondA${countA}"></td>
+                <c:set var="countA" value="${countA + 1}" scope="page"/>
                 </tr>
             </c:forEach>
         </table>
     </form>
-    <form name="tabel_formB" action="Controller" method="POST">
-        <table name="" style="width: 300px">
+    <form name="tabel_formB" action="Controller" method="POST" style="height: 150px;">
+        <table name="" style="width: 300px;">
             <tr>
                 <td colspan="4">Pulje B</td>
             </tr>
             <c:forEach var="subject" items="${poolB}">
                 <tr>
                     <td>${subject.subjectName}</td>
-                    <td><input type="checkbox" name="${subject.id}_1" value="first" id="first${countB}"></td>
-                    <td><input type="checkbox" name="${subject.id}_2" value="second" id="second${countB}"></td>
-                <c:set var="count" value="${countB + 1}" scope="page"/>
+                    <td><input type="checkbox" name="${subject.id}" value="firstB" id="firstB${countB}"></td>
+                    <td><input type="checkbox" name="${subject.id}" value="secondB" id="secondB${countB}"></td>
+                <c:set var="countB" value="${countB + 1}" scope="page"/>
                 </tr>
             </c:forEach>
         </table>
     </form>
-    <br>
 </div>
-<button class="sendSecond" name="command" value="savePriorities" type="submit" onclick="checkAll();">Send mine prioriteter</button>
-<input type="text" name="checked" value="" id="checkedSecond">
+<form onsubmit="return checkAll();" method="POST">
+    <button class="sendSecond" name="command" value="savePriorities" type="submit"/>Save priorities</button>
+    <input type="hidden" name="checked" value="" id="checked">
+</form>
 
 <%@include file="WEB-INF/jspf/footer.jspf" %>
