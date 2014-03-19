@@ -4,7 +4,7 @@
     //window.onload = function check();
     function saveChecked(id, priority)
     {
-        var result = document.getElementById("checked").value + id + "," + priority + ";";
+        var result = document.getElementById("checked").value + "," + id + "," + priority + ";";
         document.getElementById("checked").value = result;
     }
     
@@ -47,7 +47,7 @@
         </tr>
     </c:forEach>
 </table>
-    <input type="text" name="checked" value="" id="checked">
+    <input type="hidden" name="checked" value="" id="checked">
     <div>
         <button name="command" value="savePriorities" type="submit" onclick="check();">Send mine prioriteter</button>
     </div>
