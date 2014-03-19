@@ -1,21 +1,32 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
 package dk.cphbusiness.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Riboe
+ * @author Janne
  */
 @Entity
 @Table(name = "SUBJECT")
@@ -27,7 +38,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Subject.findByDescription", query = "SELECT s FROM Subject s WHERE s.description = :description"),
     @NamedQuery(name = "Subject.findByTeacher", query = "SELECT s FROM Subject s WHERE s.teacher = :teacher"),
     @NamedQuery(name = "Subject.findByPool", query = "SELECT s FROM Subject s WHERE s.pool = :pool"),
-    @NamedQuery(name = "Subject.findByFirstElectiveRound", query = "SELECT s FROM Subject s WHERE s.firstElectiveRound = :firstElectiveRound")})
+    @NamedQuery(name = "Subject.findByFirstElectiveRound", query = "SELECT s FROM Subject s WHERE s.firstElectiveRound = :firstElectiveRound"),
+    @NamedQuery(name = "Subject.findByIsFinal", query = "SELECT s FROM Subject s WHERE s.isFinal = :isFinal")})
 public class Subject implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -54,6 +66,26 @@ public class Subject implements Serializable {
     @Size(max = 1)
     @Column(name = "FIRST_ELECTIVE_ROUND")
     private String firstElectiveRound;
+    @Size(max = 1)
+    @Column(name = "IS_FINAL")
+    private String isFinal;
+    @JoinTable(name = "SUBJECT_TEACHER", joinColumns = {
+        @JoinColumn(name = "SUBJECT_ID", referencedColumnName = "ID_SUBJECT")}, inverseJoinColumns = {
+        @JoinColumn(name = "TEACHER_ID", referencedColumnName = "ID_TEACHER")})
+    @ManyToMany
+    private Collection<Teacher> teacherCollection;
+    @OneToMany(mappedBy = "finalB")
+    private Collection<Student> studentCollection;
+    @OneToMany(mappedBy = "finalA")
+    private Collection<Student> studentCollection1;
+    @OneToMany(mappedBy = "secondPriorityB")
+    private Collection<Student> studentCollection2;
+    @OneToMany(mappedBy = "secondPriorityA")
+    private Collection<Student> studentCollection3;
+    @OneToMany(mappedBy = "firstPriorityB")
+    private Collection<Student> studentCollection4;
+    @OneToMany(mappedBy = "firstPriorityA")
+    private Collection<Student> studentCollection5;
 
     public Subject() {
     }
@@ -116,6 +148,77 @@ public class Subject implements Serializable {
         this.firstElectiveRound = firstElectiveRound;
     }
 
+    public String getIsFinal() {
+        return isFinal;
+    }
+
+    public void setIsFinal(String isFinal) {
+        this.isFinal = isFinal;
+    }
+
+    @XmlTransient
+    public Collection<Teacher> getTeacherCollection() {
+        return teacherCollection;
+    }
+
+    public void setTeacherCollection(Collection<Teacher> teacherCollection) {
+        this.teacherCollection = teacherCollection;
+    }
+
+    @XmlTransient
+    public Collection<Student> getStudentCollection() {
+        return studentCollection;
+    }
+
+    public void setStudentCollection(Collection<Student> studentCollection) {
+        this.studentCollection = studentCollection;
+    }
+
+    @XmlTransient
+    public Collection<Student> getStudentCollection1() {
+        return studentCollection1;
+    }
+
+    public void setStudentCollection1(Collection<Student> studentCollection1) {
+        this.studentCollection1 = studentCollection1;
+    }
+
+    @XmlTransient
+    public Collection<Student> getStudentCollection2() {
+        return studentCollection2;
+    }
+
+    public void setStudentCollection2(Collection<Student> studentCollection2) {
+        this.studentCollection2 = studentCollection2;
+    }
+
+    @XmlTransient
+    public Collection<Student> getStudentCollection3() {
+        return studentCollection3;
+    }
+
+    public void setStudentCollection3(Collection<Student> studentCollection3) {
+        this.studentCollection3 = studentCollection3;
+    }
+
+    @XmlTransient
+    public Collection<Student> getStudentCollection4() {
+        return studentCollection4;
+    }
+
+    public void setStudentCollection4(Collection<Student> studentCollection4) {
+        this.studentCollection4 = studentCollection4;
+    }
+
+    @XmlTransient
+    public Collection<Student> getStudentCollection5() {
+        return studentCollection5;
+    }
+
+    public void setStudentCollection5(Collection<Student> studentCollection5) {
+        this.studentCollection5 = studentCollection5;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -140,5 +243,5 @@ public class Subject implements Serializable {
     public String toString() {
         return "dk.cphbusiness.model.Subject[ idSubject=" + idSubject + " ]";
     }
-
+    
 }

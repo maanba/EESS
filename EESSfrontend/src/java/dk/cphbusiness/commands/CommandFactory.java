@@ -32,6 +32,8 @@ public class CommandFactory implements Factory {
         commands.put("toFirstElectionPage", new ToFirstElectionPageCommand(("/first_election.jsp")));
         commands.put("toSecondElectionPage", new ToSecondElectionPageCommand(("/second_election.jsp")));
         commands.put("save_pools", new SavePoolsSortingCommand("/main.jsp"));
+        commands.put("toAdministrationPage", new ToAdministrationPageCommand("/administration.jsp"));
+        commands.put("createFile", new CreateFileCommand("/download.jsp"));
     }
 
     public static Factory getInstance() {

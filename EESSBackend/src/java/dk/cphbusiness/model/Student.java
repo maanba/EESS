@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
 package dk.cphbusiness.model;
 
@@ -17,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Riboe
+ * @author Janne
  */
 @Entity
 @Table(name = "STUDENT")
@@ -36,18 +41,24 @@ public class Student implements Serializable {
     @Size(max = 30)
     @Column(name = "STUDENT_NAME")
     private String studentName;
-    @JoinColumn(name = "FIRST_PRIORITY_A", referencedColumnName = "ID_SUBJECT")
+    @JoinColumn(name = "FINAL_B", referencedColumnName = "ID_SUBJECT")
     @ManyToOne
-    private Subject firstPriorityA;
-    @JoinColumn(name = "FIRST_PRIORITY_B", referencedColumnName = "ID_SUBJECT")
+    private Subject finalB;
+    @JoinColumn(name = "FINAL_A", referencedColumnName = "ID_SUBJECT")
     @ManyToOne
-    private Subject firstPriorityB;
-    @JoinColumn(name = "SECOND_PRIORITY_A", referencedColumnName = "ID_SUBJECT")
-    @ManyToOne
-    private Subject secondPriorityA;
+    private Subject finalA;
     @JoinColumn(name = "SECOND_PRIORITY_B", referencedColumnName = "ID_SUBJECT")
     @ManyToOne
     private Subject secondPriorityB;
+    @JoinColumn(name = "SECOND_PRIORITY_A", referencedColumnName = "ID_SUBJECT")
+    @ManyToOne
+    private Subject secondPriorityA;
+    @JoinColumn(name = "FIRST_PRIORITY_B", referencedColumnName = "ID_SUBJECT")
+    @ManyToOne
+    private Subject firstPriorityB;
+    @JoinColumn(name = "FIRST_PRIORITY_A", referencedColumnName = "ID_SUBJECT")
+    @ManyToOne
+    private Subject firstPriorityA;
 
     public Student() {
     }
@@ -72,20 +83,28 @@ public class Student implements Serializable {
         this.studentName = studentName;
     }
 
-    public Subject getFirstPriorityA() {
-        return firstPriorityA;
+    public Subject getFinalB() {
+        return finalB;
     }
 
-    public void setFirstPriorityA(Subject firstPriorityA) {
-        this.firstPriorityA = firstPriorityA;
+    public void setFinalB(Subject finalB) {
+        this.finalB = finalB;
     }
 
-    public Subject getFirstPriorityB() {
-        return firstPriorityB;
+    public Subject getFinalA() {
+        return finalA;
     }
 
-    public void setFirstPriorityB(Subject firstPriorityB) {
-        this.firstPriorityB = firstPriorityB;
+    public void setFinalA(Subject finalA) {
+        this.finalA = finalA;
+    }
+
+    public Subject getSecondPriorityB() {
+        return secondPriorityB;
+    }
+
+    public void setSecondPriorityB(Subject secondPriorityB) {
+        this.secondPriorityB = secondPriorityB;
     }
 
     public Subject getSecondPriorityA() {
@@ -96,12 +115,20 @@ public class Student implements Serializable {
         this.secondPriorityA = secondPriorityA;
     }
 
-    public Subject getSecondPriorityB() {
-        return secondPriorityB;
+    public Subject getFirstPriorityB() {
+        return firstPriorityB;
     }
 
-    public void setSecondPriorityB(Subject secondPriorityB) {
-        this.secondPriorityB = secondPriorityB;
+    public void setFirstPriorityB(Subject firstPriorityB) {
+        this.firstPriorityB = firstPriorityB;
+    }
+
+    public Subject getFirstPriorityA() {
+        return firstPriorityA;
+    }
+
+    public void setFirstPriorityA(Subject firstPriorityA) {
+        this.firstPriorityA = firstPriorityA;
     }
 
     @Override
@@ -128,5 +155,5 @@ public class Student implements Serializable {
     public String toString() {
         return "dk.cphbusiness.model.Student[ idStudent=" + idStudent + " ]";
     }
-
+    
 }
