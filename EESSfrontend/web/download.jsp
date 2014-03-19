@@ -27,8 +27,11 @@
                     return;
                 }
                 if (UrlExists('http://localhost:8080/EESSfrontend/electivesubjects.dat')){
+                    var loader = document.getElementById('loader');
+                    loader.style.display = 'none';
                     var downloadlink = document.getElementById('link');
                     downloadlink.style.display = 'block';
+                    
                 }
             }
 
@@ -44,8 +47,9 @@
     </head>
     <body>
         <h1>download link vises indenfor 10 sekunder</h1>
+        <img src="http://localhost:8080/EESSfrontend/loading.gif" id="loader" style="height: 100px; width: 100px;"/>
         <div style="display: none" id="link">
-            <a href="http://localhost:8080/EESSfrontend/electivesubjects.dat" download="electivesubjects.dat"  >Download</a>
+            <a href="http://localhost:8080/EESSfrontend/electivesubjects.dat" download="electivesubjects.dat">Download</a>
         </div>
     </body>
 </html>
