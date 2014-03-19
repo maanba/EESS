@@ -20,76 +20,94 @@ public class SavePrioritiesCommand extends TargetCommand {
         System.out.println("hej" + request.getParameter("checked"));
         String[] checked = request.getParameter("checked").split(";");
         DTOStudent student = instance.getStudent(200);
+        DTOSubject[] Arr1 = new DTOSubject[1];
+        DTOSubject[] Arr2 = new DTOSubject[1];
+        DTOSubject[] Arr3 = new DTOSubject[1];
+        DTOSubject[] Arr4 = new DTOSubject[1];
 
+        System.out.println(checked.length);
         DTOSubject[] firstPriorities = new DTOSubject[2];
         DTOSubject[] secondPriorities = new DTOSubject[2];
-        for (int n = 0; n < list.size(); n++) {
-            for (int i = 0; i < checked.length; i++) {
-                String[] temp = checked[i].split(",");
-                if (temp[0].equals(list.get(n).getId() + "")) {
-                    System.out.println(temp[1]);
-                    if (temp[1].equals(1 + "")) {
-                        if (firstPriorities[0] == null) {
-                            firstPriorities[0] = list.get(n);
-                            if (temp[2].equals("")){
-                                
-                            }
-                        } else {
-                            firstPriorities[1] = list.get(n);
-                        }
+        for (int n = 0; n < list.size(); n++)
+        {
+            String[] check1 = checked[0].split(",");
+            if(check1[3].equals("A")){
+                if(check1[2].equals(1 + "")){
+                    if((list.get(n).getId()+"").equals(check1[1]))
+                    {
+                        firstPriorities[0] = list.get(n);
+                        System.out.println("1. prioritet, pulje A: check1[1], bør blive 5, bliver: " + check1[1]);
                     }
-                    if (temp[1].equals(2 + "")) {
-                        if (secondPriorities[0] == null) {
-                            secondPriorities[0] = list.get(n);
-                        } else {
-                            secondPriorities[1] = list.get(n);
-                        }
+                }
+                else if(check1[2].equals(2 + ""))
+                {
+                    if((list.get(n).getId()+"").equals(check1[1]))
+                    {
+                        firstPriorities[1] = list.get(n);
+                        System.out.println("2. prioritet, pulje A: check1[1], bør blive 5, bliver: " + check1[1]);
                     }
                 }
             }
+            String[] check2 = checked[1].split(",");
+            if(check2[3].equals("A")){
+                if(check2[2].equals(1 + "")){
+                    if((list.get(n).getId()+"").equals(check2[1]))
+                    {
+                        firstPriorities[0] = list.get(n);
+                        System.out.println("1. prioritet, pulje A: check2[1], bør blive 2, bliver: " + check2[1]);
+                    }
+                }
+                else if(check2[2].equals(2 + ""))
+                {
+                    if((list.get(n).getId()+"").equals(check2[1]))
+                    {
+                        firstPriorities[1] = list.get(n);
+                        System.out.println("2. prioritet, pulje A: check2[1], bør blive 2, bliver: " + check2[1]);
+                    }
+                }
+            }
+            String[] check3 = checked[2].split(",");
+            if(check3[3].equals("B")){
+                if(check3[2].equals(1 + "")){
+                    if((list.get(n).getId()+"").equals(check3[1]))
+                    {
+                        secondPriorities[0] = list.get(n);
+                        System.out.println("1. prioritet, pulje B: check3[1], bør blive 8, bliver: " + check3[1]);
+                    }
+                }
+                else if(check3[2].equals(2 + ""))
+                {
+                    if((list.get(n).getId()+"").equals(check3[1]))
+                    {
+                        secondPriorities[1] = list.get(n);
+                        System.out.println("2. prioritet, pulje B: check3[1], bør blive 8, bliver: " + check3[1]);
+                    }
+                }
+            }
+            String[] check4 = checked[3].split(",");
+            if(check4[3].equals("B")){
+                if(check4[2].equals(1 + "")){
+                    if((list.get(n).getId()+"").equals(check4[1]))
+                    {
+                        secondPriorities[0] = list.get(n);
+                        System.out.println("1. prioritet, pulje B: check4[1], bør blive 6, bliver: " + check4[1]);
+                    }
+                }
+                else if(check4[2].equals(2 + ""))
+                {
+                    if((list.get(n).getId()+"").equals(check4[1]))
+                    {
+                        secondPriorities[1] = list.get(n);
+                        System.out.println("2. prioritet, pulje B: check4[1], bør blive 6, bliver: " + check4[1]);
+                    }
+                }
+            }            
         }
-        for (int i = 0;i<firstPriorities.length;i++){
-            if (firstPriorities[i].getTeacher() == null){
-                firstPriorities[i].setTeacher("No teachers");
-            }
-            if (firstPriorities[i].getFirstElectiveRound() == null){
-                // SKAL GIVETVIS ÆNDRES
-                firstPriorities[i].setFirstElectiveRound("Y");
-            }
-            if (firstPriorities[i].getPool() == null){
-                // SKAL GIVETVIS ÆNDRES
-                firstPriorities[i].setPool("A");
-            }
-            System.out.println(firstPriorities[i].getId());
-            System.out.println(firstPriorities[i].getDescription());
-            System.out.println(firstPriorities[i].getSubjectName());
-            System.out.println(firstPriorities[i].getTeacher());
-            System.out.println(firstPriorities[i].getFirstElectiveRound());
-            System.out.println(firstPriorities[i].getPool());
-        }
-        for (int i = 0;i<secondPriorities.length;i++){
-            if (secondPriorities[i].getPool() == null){
-                secondPriorities[i].setPool("A");
-            }
-            System.out.println(secondPriorities[i].getId());
-            System.out.println(secondPriorities[i].getDescription());
-            System.out.println(secondPriorities[i].getSubjectName());
-            System.out.println(secondPriorities[i].getTeacher());
-            System.out.println(secondPriorities[i].getFirstElectiveRound());
-            System.out.println(secondPriorities[i].getPool());
-        }
-        System.out.println(student.toString());
-        
+        // den her skal laves OOOMMM!!!
         student.setFirstPriorities(firstPriorities);
-        student.setSecondPriorities(secondPriorities);
-
+        
         instance.setPriorities(student);
-
-//        for(int i = 0; i < list.size(); i++)
-//        {
-//            String subjName = request.getParameter(list.get(i).getId()+"");
-//            System.out.println(subjName + " er subjName");
-//        }
+        
         return super.execute(request);
     }
 

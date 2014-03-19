@@ -5,7 +5,7 @@
 //    window.onload = function check(theForm);
     function saveChecked(id, priority, pool)
     {
-        var result = document.getElementById("checked").value + id + "," + priority + "," + pool + ";";
+        var result = document.getElementById("checked").value + "," + id + "," + priority + "," + pool + ";";
         document.getElementById("checked").value = result;
     }
 
