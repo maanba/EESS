@@ -47,7 +47,7 @@
     </head>
     <body>
         <h1>download link vises indenfor 10 sekunder</h1>
-        <img src="http://localhost:8080/EESSfrontend/loading.gif" id="loader" style="height: 100px; width: 100px;"/>
+        <img src="http://localhost:8080/EESSfrontend/loading.gif" id="loader" style="height: 50px; width: 50px;"/>
         <div style="display: none" id="link">
             <a href="http://localhost:8080/EESSfrontend/electivesubjects.dat" download="electivesubjects.dat">Download</a>
         </div>
