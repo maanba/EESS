@@ -183,6 +183,7 @@ public class EESSManagerBean implements EessInterface {
             student.setSecondPriorityB(Assembler.DTOSubjectToSubjectObject(secondPriorities[i]));
             }
         }
+        System.out.println(student);
         // ER IKKE TESTET!!!!!!!!!!
         persist(student);
     }

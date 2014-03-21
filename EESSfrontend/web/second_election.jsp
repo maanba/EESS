@@ -113,7 +113,7 @@
     </form>
 </div>
 <form onsubmit="return checkAll();" method="POST">
-    <button class="sendSecond" name="command" value="savePriorities" type="submit"/>Save priorities</button>
+    <button class="sendSecond" name="command" value="savesecondpriorities" type="submit"/>Save priorities</button>
     <input type="hidden" name="checked" value="" id="checked">
 </form>
 
