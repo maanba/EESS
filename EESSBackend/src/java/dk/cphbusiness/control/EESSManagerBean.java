@@ -27,41 +27,52 @@ import javax.persistence.SqlResultSetMapping;
  * @author Ejer
  */
 @SqlResultSetMapping(name = "StudentsWithPriorities",
-        entities = {
-            @EntityResult(entityClass = Student.class, fields = {
-                @FieldResult(name = "idStudent", column = "id_student"),
-                @FieldResult(name = "studentName", column = "student_name")
+        entities =
+        {
+            @EntityResult(entityClass = Student.class, fields =
+                    {
+                        @FieldResult(name = "idStudent", column = "id_student"),
+                        @FieldResult(name = "studentName", column = "student_name")
             }),
-            @EntityResult(entityClass = Integer.class, fields = {
-                @FieldResult(name = "value", column = "priority")
+            @EntityResult(entityClass = Integer.class, fields =
+                    {
+                        @FieldResult(name = "value", column = "priority")
             }),
-            @EntityResult(entityClass = String.class, fields = {
-                @FieldResult(name = "value", column = "subject_name")
-            })},
-        columns = {
+            @EntityResult(entityClass = String.class, fields =
+                    {
+                        @FieldResult(name = "value", column = "subject_name")
+            })
+        },
+        columns =
+        {
             @ColumnResult(name = "priority"),
-            @ColumnResult(name = "subject_name")}
+            @ColumnResult(name = "subject_name")
+        }
 )
 
 @Stateless
-public class EESSManagerBean implements EessInterface {
+public class EESSManagerBean implements EessInterface
+{
 
     @PersistenceContext(unitName = "EESSBackendPU")
     private EntityManager em;
 
     @Override
-    public ArrayList<DTOStudent> getStudents() {
+    public ArrayList<DTOStudent> getStudents()
+    {
         Query query = em.createNamedQuery("Student.findAll");
         List<Student> students = query.getResultList();
         ArrayList<DTOStudent> dtoStudents = new ArrayList<>();
-        for (int i = 0; i < students.size(); i++) {
+        for (int i = 0; i < students.size(); i++)
+        {
             dtoStudents.add(Assembler.StudentObjectToDTOStudent(students.get(i)));
         }
         return dtoStudents;
     }
 
     @Override
-    public DTOStudent getStudent(int id) {
+    public DTOStudent getStudent(int id)
+    {
         Query query = em.createNamedQuery("Student.findByIdStudent");
         query.setParameter("idStudent", id);
         Student student = (Student) query.getSingleResult();
@@ -71,11 +82,13 @@ public class EESSManagerBean implements EessInterface {
     }
 
     @Override
-    public ArrayList<DTOTeacher> getTeachers() {
+    public ArrayList<DTOTeacher> getTeachers()
+    {
         Query query = em.createNamedQuery("Teacher.findAll");
-        ArrayList<Teacher> teachers = (ArrayList<Teacher>) query.getResultList();
+        List<Teacher> teachers = query.getResultList();
         ArrayList<DTOTeacher> dtoTeachers = new ArrayList<>();
-        for (int i = 0; i < teachers.size(); i++) {
+        for (int i = 0; i < teachers.size(); i++)
+        {
             dtoTeachers.add(Assembler.TeacherObjectToDTOTeacher(teachers.get(i)));
         }
         // ER IKKE TESTET!!!!!!!!
@@ -83,21 +96,25 @@ public class EESSManagerBean implements EessInterface {
     }
 
     @Override
-    public DTOTeacher getTeacher(int id, String name) {
+    public DTOTeacher getTeacher(int id)
+    {
         Query query = em.createNamedQuery("Teacher.findByIdTeacher");
-        query.setParameter("id_teacher", id);
+        query.setParameter("idTeacher", id);
         Teacher teacher = (Teacher) query.getSingleResult();
+        DTOTeacher dtoTeacher = Assembler.TeacherObjectToDTOTeacher(teacher);
         // ER IKKE TESTET!!!!!!!
-        return Assembler.TeacherObjectToDTOTeacher(teacher);
+        return dtoTeacher;
     }
 
     @Override
-    public ArrayList<DTOSubject> getSubjects() {
+    public ArrayList<DTOSubject> getSubjects()
+    {
         Query query = em.createNamedQuery("Subject.findAll");
         Collection subject = query.getResultList();
         Collection<DTOSubject> subjects = Assembler.CreateSubjects(subject);
         ArrayList<DTOSubject> subs = new ArrayList();
-        for (DTOSubject ret : subjects) {
+        for (DTOSubject ret : subjects)
+        {
             subs.add(ret);
         }
         // ER IKKE TESTET!!!!
@@ -105,7 +122,8 @@ public class EESSManagerBean implements EessInterface {
     }
 
     @Override
-    public DTOSubject getSubject(int id) {
+    public DTOSubject getSubject(int id)
+    {
         Query query = em.createNamedQuery("Subject.findByIdSubject");
         query.setParameter("id_subject", id);
         Subject subject = (Subject) query.getSingleResult();
@@ -115,7 +133,8 @@ public class EESSManagerBean implements EessInterface {
     }
 
     @Override
-    public void setPool(int id, String pool) {
+    public void setPool(int id, String pool)
+    {
         Subject subject = em.find(Subject.class, id);
         subject.setPool(pool);
         // ER IKKE TESTET!!!!!!!!!!
@@ -123,7 +142,8 @@ public class EESSManagerBean implements EessInterface {
     }
 
     @Override
-    public void setSubjectTeacher(int teacherId, int subjectId) {
+    public void setSubjectTeacher(int teacherId, int subjectId)
+    {
         Teacher teacher = em.find(Teacher.class, teacherId);
         Subject subject = em.find(Subject.class, subjectId);
         Query q = em.createQuery("INSERT INTO subject_teacher VALUES (?,?)");
@@ -134,30 +154,40 @@ public class EESSManagerBean implements EessInterface {
     }
 
     @Override
-    public boolean validateLogin(String username, String password) {
+    public boolean validateLogin(String username, String password)
+    {
         return !username.equals("") && !password.equals("");
     }
 
-    public void persist(Object object) {
+    public
+            void persist(Object object)
+    {
         em.persist(object);
     }
 
     @Override
-    public void setPriorities(DTOStudent dtoStudent) {
+    public void setPriorities(DTOStudent dtoStudent)
+    {
         Student student = em.find(Student.class, dtoStudent.getId());
         DTOSubject[] firstPriorities = dtoStudent.getFirstPriorities();
         DTOSubject[] secondPriorities = dtoStudent.getSecondPriorities();
-        for (int i = 0; i < firstPriorities.length; i++) {
-            if (i == 0) {
+        for (int i = 0; i < firstPriorities.length; i++)
+        {
+            if (i == 0)
+            {
                 student.setFirstPriorityA(Assembler.DTOSubjectToSubjectObject(firstPriorities[i]));
-            } else {
+            } else
+            {
                 student.setFirstPriorityB(Assembler.DTOSubjectToSubjectObject(firstPriorities[i]));
             }
         }
-        for (int i = 0; i < secondPriorities.length; i++) {
-            if (i == 0) {
+        for (int i = 0; i < secondPriorities.length; i++)
+        {
+            if (i == 0)
+            {
                 student.setSecondPriorityA(Assembler.DTOSubjectToSubjectObject(secondPriorities[i]));
-            } else {
+            } else
+            {
                 student.setSecondPriorityB(Assembler.DTOSubjectToSubjectObject(secondPriorities[i]));
             }
         }
@@ -167,8 +197,10 @@ public class EESSManagerBean implements EessInterface {
     }
 
     @Override
-    public void setSubjects(ArrayList<DTOSubject> subjects) {
-        for (DTOSubject dTOSubject : subjects) {
+    public void setSubjects(ArrayList<DTOSubject> subjects)
+    {
+        for (DTOSubject dTOSubject : subjects)
+        {
             Subject subject = Assembler.DTOSubjectToSubjectObject(dTOSubject);
             em.merge(subject);
         }

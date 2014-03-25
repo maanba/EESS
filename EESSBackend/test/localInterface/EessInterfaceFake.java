@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package contract;
+package localInterface;
 
 import dto.DTOStudent;
 import dto.DTOSubject;
@@ -17,7 +17,7 @@ import javax.ejb.Remote;
  * @author danielthomsen1990
  */
 @Remote
-public interface EessInterface 
+public interface EessInterfaceFake 
 {
     public ArrayList<DTOStudent> getStudents();
     
@@ -25,7 +25,7 @@ public interface EessInterface
     
     public ArrayList<DTOTeacher> getTeachers();
     
-    public DTOTeacher getTeacher(int id);
+    public DTOTeacher getTeacher(int id, String name);
     
     public ArrayList<DTOSubject> getSubjects();
     
