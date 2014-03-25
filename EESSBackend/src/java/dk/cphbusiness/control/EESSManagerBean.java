@@ -51,28 +51,6 @@ public class EESSManagerBean implements EessInterface {
 
     @Override
     public ArrayList<DTOStudent> getStudents() {
-//        System.out.println("AAAAAAAAAAAAAAAAAA");
-//        Query query = em.createNativeQuery("SELECT Student.*, Subject.SUBJECT_NAME, PRIORITY FROM Student, Subject, SUBJECT_STUDENT\n"
-//                + "WHERE ID_Student = Student_ID AND ID_Subject = Subject_ID", "StudentsWithPriorities");
-//        System.out.println("BBBBBBBBBBBBBBBBBBBBBB");
-//        List resultList = query.getResultList();
-//        System.out.println("CCCCCCCCCCCCCCCCCCCCCCC");
-//        int i = 1;
-//        for (Object object : resultList) {
-//            try {
-//                System.out.print(i + ": ");
-//                Student s = (Student) object;
-//                System.out.print("IS A DTOStudent -- " + s + "\n");
-//            } catch (ClassCastException e) {
-//                e.printStackTrace();
-//                System.out.print("NOT A DTOStudent\n");
-//            }
-//
-//            i++;
-////            System.out.println(object.getClass());
-//        }
-//        return new ArrayList<DTOStudent>();
-
         Query query = em.createNamedQuery("Student.findAll");
         List<Student> students = query.getResultList();
         ArrayList<DTOStudent> dtoStudents = new ArrayList<>();
@@ -169,18 +147,18 @@ public class EESSManagerBean implements EessInterface {
         Student student = em.find(Student.class, dtoStudent.getId());
         DTOSubject[] firstPriorities = dtoStudent.getFirstPriorities();
         DTOSubject[] secondPriorities = dtoStudent.getSecondPriorities();
-        for (int i = 0 ;i < firstPriorities.length ; i++){
-            if (i == 0){
-            student.setFirstPriorityA(Assembler.DTOSubjectToSubjectObject(firstPriorities[i]));
+        for (int i = 0; i < firstPriorities.length; i++) {
+            if (i == 0) {
+                student.setFirstPriorityA(Assembler.DTOSubjectToSubjectObject(firstPriorities[i]));
             } else {
-            student.setFirstPriorityB(Assembler.DTOSubjectToSubjectObject(firstPriorities[i]));
+                student.setFirstPriorityB(Assembler.DTOSubjectToSubjectObject(firstPriorities[i]));
             }
         }
-        for (int i = 0 ;i < secondPriorities.length ; i++){
-            if (i == 0){
-            student.setSecondPriorityA(Assembler.DTOSubjectToSubjectObject(secondPriorities[i]));
+        for (int i = 0; i < secondPriorities.length; i++) {
+            if (i == 0) {
+                student.setSecondPriorityA(Assembler.DTOSubjectToSubjectObject(secondPriorities[i]));
             } else {
-            student.setSecondPriorityB(Assembler.DTOSubjectToSubjectObject(secondPriorities[i]));
+                student.setSecondPriorityB(Assembler.DTOSubjectToSubjectObject(secondPriorities[i]));
             }
         }
         System.out.println(student);
@@ -189,10 +167,8 @@ public class EESSManagerBean implements EessInterface {
     }
 
     @Override
-    public void setSubjects(ArrayList<DTOSubject> subjects)
-    {
-        for (DTOSubject dTOSubject : subjects)
-        {
+    public void setSubjects(ArrayList<DTOSubject> subjects) {
+        for (DTOSubject dTOSubject : subjects) {
             Subject subject = Assembler.DTOSubjectToSubjectObject(dTOSubject);
             em.merge(subject);
         }
