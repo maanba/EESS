@@ -73,12 +73,8 @@ public class EESSManagerBean implements EessInterface
     @Override
     public DTOStudent getStudent(int id)
     {
-        Query query = em.createNamedQuery("Student.findByIdStudent");
-        query.setParameter("idStudent", id);
-        Student student = (Student) query.getSingleResult();
-        DTOStudent dtoStudent = Assembler.StudentObjectToDTOStudent(student);
-        // ER IKKE TESTET!!!!!!!
-        return dtoStudent;
+        Student student = em.find(Student.class, id);
+        return Assembler.StudentObjectToDTOStudent(student);
     }
 
     @Override
@@ -98,12 +94,8 @@ public class EESSManagerBean implements EessInterface
     @Override
     public DTOTeacher getTeacher(int id)
     {
-        Query query = em.createNamedQuery("Teacher.findByIdTeacher");
-        query.setParameter("idTeacher", id);
-        Teacher teacher = (Teacher) query.getSingleResult();
-        DTOTeacher dtoTeacher = Assembler.TeacherObjectToDTOTeacher(teacher);
-        // ER IKKE TESTET!!!!!!!
-        return dtoTeacher;
+        Teacher teacher = em.find(Teacher.class, id);
+        return Assembler.TeacherObjectToDTOTeacher(teacher);
     }
 
     @Override
@@ -117,19 +109,14 @@ public class EESSManagerBean implements EessInterface
         {
             subs.add(ret);
         }
-        // ER IKKE TESTET!!!!
         return subs;
     }
 
     @Override
     public DTOSubject getSubject(int id)
     {
-        Query query = em.createNamedQuery("Subject.findByIdSubject");
-        query.setParameter("id_subject", id);
-        Subject subject = (Subject) query.getSingleResult();
-        DTOSubject dtoSubject = Assembler.SubjectObjectToDTOSubject(subject);
-        // ER IKKE TESTET!!!!
-        return dtoSubject;
+        Subject subject = em.find(Subject.class, id);
+        return Assembler.SubjectObjectToDTOSubject(subject);
     }
 
     @Override
