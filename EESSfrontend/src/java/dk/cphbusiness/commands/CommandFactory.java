@@ -76,6 +76,12 @@ public class CommandFactory implements Factory {
 
     @Override
     public void setPriorities(DTOStudent student) {
+        System.out.println(student.getName().toString());
+        System.out.println(".");
+        System.out.println(".");
+        System.out.println(",");
+        System.out.println("-");
+        System.out.println(student.getFirstPriorities()[0] == null);
         managerBean.setPriorities(student);
     }
 

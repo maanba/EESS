@@ -6,6 +6,7 @@
     {
         var result = document.getElementById("checked").value + "," + id + "," + priority + ";";
         document.getElementById("checked").value = result;
+        console.log(result);
     }
     
     function check()
@@ -13,6 +14,7 @@
         console.log(${subamount});
         console.log(${count});
         var amount = ${subamount}-1;
+        console.log(amount + " is amount");
         for(var i = amount; i >= 0; i--)
         {
             console.log("hej fra din forløkke");
@@ -20,12 +22,13 @@
             var secondCheck = document.getElementById('second'+i);
             if(firstCheck.checked)
             {
-                saveChecked(i, 1);
-                console.log("YAY! FirstCheck == checked");
+                saveChecked(firstCheck.name, 1);
+                console.log(firstCheck.name + " = firstCheck.name");
             }
             if(secondCheck.checked)
             {
-                saveChecked(i, 2);
+                saveChecked(secondCheck.name, 2);
+                console.log(secondCheck.name + " = secondCheck.name");
             }
         }
     }
@@ -41,8 +44,8 @@
     <c:forEach var="subject" items="${subjects}">
         <tr>
             <td>${subject.subjectName}</td>
-            <td><input type="checkbox" name="${subject.id}_1" value="first" id="first${count}"></td>
-            <td><input type="checkbox" name="${subject.id}_2" value="second" id="second${count}"></td>
+            <td><input type="checkbox" name="${subject.id}" value="first" id="first${count}"></td>
+            <td><input type="checkbox" name="${subject.id}" value="second" id="second${count}"></td>
             <c:set var="count" value="${count + 1}" scope="page"/>
         </tr>
     </c:forEach>
