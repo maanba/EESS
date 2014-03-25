@@ -1,11 +1,9 @@
 package dk.cphbusiness.commands;
 
 import com.google.gson.Gson;
-import dto.DTOStudent;
 import dto.DTOSubject;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
-import org.jboss.weld.bean.builtin.FacadeInjectionPoint;
 
 /**
  *
@@ -57,6 +55,7 @@ public class SavePoolsSortingCommand extends TargetCommand
             }
         }
         CommandFactory.getInstance().setSubjects(subjects);
-        return super.execute(request); //To change body of generated methods, choose Tools | Templates.
+        request.setAttribute("status", "The subjects have been saved.");
+        return super.execute(request);
     }
 }

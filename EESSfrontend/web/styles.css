@@ -98,3 +98,8 @@
     margin-bottom:10px;
     width:220px;
 }
+
+#statusDiv{
+    font-weight: bolder;
+    font-size: larger;
+}

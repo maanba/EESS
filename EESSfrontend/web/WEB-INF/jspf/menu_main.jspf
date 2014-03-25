@@ -1,41 +1,13 @@
-<script>
-    function derp(){
-      window.location.href = "Controller?command=signinpage";  
-    };
-</script>
-
 <table style="border: 0px; background-color: #104976; color: white; width: 100%;">
     <tr class="menuContainer">
         <td style="width: 1%"></td>
-        <td id="menuItem" name="field1" onmouseover="changeColorEnter(this)" onmouseout="changeColorLeave(this)" onmouseup="changeURL(this)">Menupunkt 1</td>
+        <td id="menuItem" name="field1" onmouseover="changeColorEnter(this)" onmouseout="changeColorLeave(this)" onmouseup="window.location.href = 'Controller?command=toFirstElectionPage';">Choose priorities</td>
         <td style="width: 10%"></td>
-        <td id="menuItem" name="field2" onmouseover="changeColorEnter(this)" onmouseout="changeColorLeave(this)" onmouseup="changeURL(this)">Menupunkt 2</td>
+        <td id="menuItem" name="field2" onmouseover="changeColorEnter(this)" onmouseout="changeColorLeave(this)" onmouseup="window.location.href = 'Controller?command=manage_pools';">Sort pools</td>
         <td style="width: 10%"></td>
-        <td id="menuItem" name="field4" onmouseover="changeColorEnter(this)" onmouseout="changeColorLeave(this)" onmouseup="changeURL(this)">Valutakurser</td>
+        <td id="menuItem" name="field3" onmouseover="changeColorEnter(this)" onmouseout="changeColorLeave(this)" onmouseup="window.location.href = 'Controller?command=toSecondElectionPage';">Choose priorities 2</td>
         <td style="width: 10%"></td>
-        <td id="menuItem" name="field3" onmouseover="changeColorEnter(this)" onmouseout="changeColorLeave(this)" onmouseup="changeURL(this)">Om BankBank</td>
+        <td id="menuItem" name="field4" onmouseover="changeColorEnter(this)" onmouseout="changeColorLeave(this)" onmouseup="window.location.href = 'Controller?command=toAdministrationPage';">Review & print</td>
         <td style="width: 100%"></td>
-        <!--<td id="menuItem" name="signIn" onmouseover="changeColorEnter(this)" onmouseout="changeColorLeave(this)" onmouseup="toggle()">Log ind</td>-->
-        <td id="menuItem" name="signIn" onmouseover="changeColorEnter(this)" onmouseout="changeColorLeave(this)" onmouseup="derp()">Log ind</td>
-        <td style="width: 1%"></td>
     </tr>
 </table>
-<!--<div id="signInDiv" style="  
-     position:absolute;  
-     width:200px;height:175px;top:83px;  
-     padding:16px;background: white;  
-     border:2px solid #2266AA;
-     margin-left: 724px;
-     z-index:100;
-     display: none">
-    <div style="color: red; margin-bottom: 5px">
-        ${error}
-    </div>
-    <form action="Controller" method="POST">
-        <input type="hidden" name="command" value="login_command"/>
-        <input type="hidden" name="show_box" value="true"/>
-        Username: <input id="usernameField" type="text" name="username" value=""/><p/>
-        Password: <input type="password" name="password" value=""/><p/>
-        <input type="submit" value="Log Ind"/>
-    </form>
-</div>-->
