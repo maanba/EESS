@@ -9,5 +9,5 @@
         <td style="width: 10%"></td>
         <td id="menuItem" name="field4" onmouseover="changeColorEnter(this)" onmouseout="changeColorLeave(this)" onmouseup="window.location.href = 'Controller?command=toAdministrationPage';">Review & print</td>
         <td style="width: 100%"></td>
-    </tr>
+    </tr> 
 </table>

@@ -22,7 +22,7 @@
         }
     }
     
-    addLoadEvent(statusCheck);
+    addLoadEvent(statusCheck); 
 </script>
 
 <div id="statusDiv">

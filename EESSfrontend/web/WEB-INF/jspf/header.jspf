@@ -27,4 +27,4 @@
 
                 <%@include file="menu_main.jspf"%>
                 
-                <div style="width: 950px; margin: 0 auto; margin-top: 6px">
+                <div style="width: 950px; margin: 0 auto; margin-top: 6px" >
