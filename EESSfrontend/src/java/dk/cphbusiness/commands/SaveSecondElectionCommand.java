@@ -26,7 +26,6 @@ public class SaveSecondElectionCommand extends TargetCommand
     @Override
     public String execute(HttpServletRequest request)
     {
-        // skal gøres at den gemmer pool, fra second election og en slags null værdi i pool fra first election
         Factory instance = CommandFactory.getInstance();
         List<DTOSubject> list = instance.getSubjects();
         String[] checked = request.getParameter("checked").split(";");
@@ -109,12 +108,13 @@ public class SaveSecondElectionCommand extends TargetCommand
             }
 
         }
-        // den her skal laves OOOMMM!!!
         student.setFirstPriorities(firstPriorities);
         student.setSecondPriorities(secondPriorities);
 
         instance.setPriorities(student);
 
+        request.setAttribute("status", "Your selections have been saved."); 
+        
         return super.execute(request);
     }
 }

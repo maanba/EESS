@@ -5,15 +5,26 @@
     <head>
         <link href="styles.css" rel="stylesheet" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>BankBank</title>
+        <script>
+            var bgColor;
+            function changeColorEnter(obj) {
+                bgColor = obj.parentNode.parentNode.style.backgroundColor;
+                obj.style.backgroundColor = "#1575c0";
+            }
+
+            function changeColorLeave(obj) {
+                obj.style.backgroundColor = bgColor;
+            }
+        </script>
+        <title>Elective Subjects (EESS)</title>
     </head>
     <body style="background-color: #f3f0e9">
         <div id="main">
             <div id="content">
                 <div style="background-color: #0E5C8C">
-                    <a href="Controller?command=main"><font style="cursor: pointer; font-size: 40px; font-family: Helvetica, sans-serif; font-weight: bold; color: white">EESS</font></a>
+                    <a href="Controller?command=main"><font style="cursor: pointer; font-size: 40px; font-family: Helvetica, sans-serif; font-weight: bold; color: white">Front page</font></a>
                 </div>
 
                 <%@include file="menu_main.jspf"%>
                 
-                <div style="width: 950px; margin: 0 auto; margin-top: 6px">
+                <div style="width: 950px; margin: 0 auto; margin-top: 6px" >
