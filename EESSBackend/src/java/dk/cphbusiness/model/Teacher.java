@@ -7,6 +7,7 @@
 package dk.cphbusiness.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -54,6 +55,13 @@ public class Teacher implements Serializable {
 
     public Teacher(Integer idTeacher) {
         this.idTeacher = idTeacher;
+    }
+
+    public Teacher(Integer idTeacher, String teacherName, String intials) {
+        this.idTeacher = idTeacher;
+        this.teacherName = teacherName;
+        this.intials = intials;
+        subjectCollection = new ArrayList();
     }
 
     public Integer getIdTeacher() {
