@@ -113,9 +113,8 @@ public class SaveSecondElectionCommand extends TargetCommand
 
         instance.setPriorities(student);
 
-        request.setAttribute("status", "Your selections have been saved."); 
-        
+        request.setAttribute("status", "Your selections have been saved.");
+
         return super.execute(request);
     }
 }
-

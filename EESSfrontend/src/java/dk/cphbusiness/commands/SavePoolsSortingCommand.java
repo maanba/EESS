@@ -55,7 +55,7 @@ public class SavePoolsSortingCommand extends TargetCommand
             }
         }
         CommandFactory.getInstance().setSubjects(subjects);
-        request.setAttribute("status", "The subjects have been saved."); 
+        request.setAttribute("status", "The subjects have been saved.");
         return super.execute(request);
     }
 }

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package dk.cphbusiness.model;
 
 import java.io.Serializable;
@@ -27,11 +26,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "STUDENT")
 @XmlRootElement
-@NamedQueries({
+@NamedQueries(
+{
     @NamedQuery(name = "Student.findAll", query = "SELECT s FROM Student s"),
     @NamedQuery(name = "Student.findByIdStudent", query = "SELECT s FROM Student s WHERE s.idStudent = :idStudent"),
-    @NamedQuery(name = "Student.findByStudentName", query = "SELECT s FROM Student s WHERE s.studentName = :studentName")})
-public class Student implements Serializable {
+    @NamedQuery(name = "Student.findByStudentName", query = "SELECT s FROM Student s WHERE s.studentName = :studentName")
+})
+public class Student implements Serializable
+{
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -60,100 +63,123 @@ public class Student implements Serializable {
     @ManyToOne
     private Subject firstPriorityA;
 
-    public Student() {
+    public Student()
+    {
     }
 
-    public Student(Integer idStudent) {
+    public Student(Integer idStudent)
+    {
         this.idStudent = idStudent;
     }
 
-    public Integer getIdStudent() {
+    public Integer getIdStudent()
+    {
         return idStudent;
     }
 
-    public void setIdStudent(Integer idStudent) {
+    public void setIdStudent(Integer idStudent)
+    {
         this.idStudent = idStudent;
     }
 
-    public String getStudentName() {
+    public String getStudentName()
+    {
         return studentName;
     }
 
-    public void setStudentName(String studentName) {
+    public void setStudentName(String studentName)
+    {
         this.studentName = studentName;
     }
 
-    public Subject getFinalB() {
+    public Subject getFinalB()
+    {
         return finalB;
     }
 
-    public void setFinalB(Subject finalB) {
+    public void setFinalB(Subject finalB)
+    {
         this.finalB = finalB;
     }
 
-    public Subject getFinalA() {
+    public Subject getFinalA()
+    {
         return finalA;
     }
 
-    public void setFinalA(Subject finalA) {
+    public void setFinalA(Subject finalA)
+    {
         this.finalA = finalA;
     }
 
-    public Subject getSecondPriorityB() {
+    public Subject getSecondPriorityB()
+    {
         return secondPriorityB;
     }
 
-    public void setSecondPriorityB(Subject secondPriorityB) {
+    public void setSecondPriorityB(Subject secondPriorityB)
+    {
         this.secondPriorityB = secondPriorityB;
     }
 
-    public Subject getSecondPriorityA() {
+    public Subject getSecondPriorityA()
+    {
         return secondPriorityA;
     }
 
-    public void setSecondPriorityA(Subject secondPriorityA) {
+    public void setSecondPriorityA(Subject secondPriorityA)
+    {
         this.secondPriorityA = secondPriorityA;
     }
 
-    public Subject getFirstPriorityB() {
+    public Subject getFirstPriorityB()
+    {
         return firstPriorityB;
     }
 
-    public void setFirstPriorityB(Subject firstPriorityB) {
+    public void setFirstPriorityB(Subject firstPriorityB)
+    {
         this.firstPriorityB = firstPriorityB;
     }
 
-    public Subject getFirstPriorityA() {
+    public Subject getFirstPriorityA()
+    {
         return firstPriorityA;
     }
 
-    public void setFirstPriorityA(Subject firstPriorityA) {
+    public void setFirstPriorityA(Subject firstPriorityA)
+    {
         this.firstPriorityA = firstPriorityA;
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         int hash = 0;
         hash += (idStudent != null ? idStudent.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(Object object)
+    {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Student)) {
+        if (!(object instanceof Student))
+        {
             return false;
         }
         Student other = (Student) object;
-        if ((this.idStudent == null && other.idStudent != null) || (this.idStudent != null && !this.idStudent.equals(other.idStudent))) {
+        if ((this.idStudent == null && other.idStudent != null) || (this.idStudent != null && !this.idStudent.equals(other.idStudent)))
+        {
             return false;
         }
         return true;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "dk.cphbusiness.model.Student[ idStudent=" + idStudent + " ]";
     }
-    
+
 }

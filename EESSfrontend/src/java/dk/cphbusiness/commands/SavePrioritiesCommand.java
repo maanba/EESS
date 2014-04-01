@@ -6,14 +6,17 @@ import dto.DTOSubject;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
-public class SavePrioritiesCommand extends TargetCommand {
+public class SavePrioritiesCommand extends TargetCommand
+{
 
-    public SavePrioritiesCommand(String target) {
+    public SavePrioritiesCommand(String target)
+    {
         super(target);
     }
 
     @Override
-    public String execute(HttpServletRequest request) {
+    public String execute(HttpServletRequest request)
+    {
         Factory instance = CommandFactory.getInstance();
         List<DTOSubject> list = instance.getSubjects();
         String[] checked = request.getParameter("checked").split(";");
@@ -22,22 +25,26 @@ public class SavePrioritiesCommand extends TargetCommand {
         DTOSubject[] secondPriorities = new DTOSubject[2];
 
         String[] pairs = request.getParameter("checked").split(";");
-        for (String pair : pairs) {
+        for (String pair : pairs)
+        {
             String[] pairSplit = pair.split(",");
             int priority = Integer.parseInt(pairSplit[2]);
             int id = Integer.parseInt(pairSplit[1]);
             DTOSubject[] subs;
-            if(priority == 1){
+            if (priority == 1)
+            {
                 subs = firstPriorities;
-            }
-            else{
+            } else
+            {
                 subs = secondPriorities;
             }
-            for (DTOSubject subject : list) {
-                if(subject.getId() == id && subs[0] == null){
+            for (DTOSubject subject : list)
+            {
+                if (subject.getId() == id && subs[0] == null)
+                {
                     subs[0] = subject;
-                }
-                else if(subject.getId() == id){
+                } else if (subject.getId() == id)
+                {
                     subs[1] = subject;
                 }
             }
@@ -47,7 +54,7 @@ public class SavePrioritiesCommand extends TargetCommand {
 
         instance.setPriorities(student);
 
-        request.setAttribute("status", "Your selections have been saved."); 
+        request.setAttribute("status", "Your selections have been saved.");
 
         return super.execute(request);
     }

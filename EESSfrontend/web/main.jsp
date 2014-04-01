@@ -1,12 +1,18 @@
 <%@include file="WEB-INF/jspf/header.jspf" %>
 <script>
-    function addLoadEvent(func) {
+    function addLoadEvent(func) 
+    {
         var oldonload = window.onload;
-        if (typeof window.onload != 'function') {
+        if (typeof window.onload != 'function') 
+        {
             window.onload = func;
-        } else {
-            window.onload = function() {
-                if (oldonload) {
+        } 
+        else 
+        {
+            window.onload = function() 
+            {
+                if (oldonload) 
+                {
                     oldonload();
                 }
                 func();
@@ -14,10 +20,12 @@
         }
     }
     
-    function statusCheck() {
+    function statusCheck() 
+    {
         var status = '${status}';
         var div = document.getElementById("statusDiv");
-        if (status.length == 0) {
+        if (status.length == 0) 
+        {
             div.style.display = 'none';
         }
     }

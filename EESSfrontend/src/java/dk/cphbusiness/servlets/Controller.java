@@ -1,4 +1,3 @@
-
 package dk.cphbusiness.servlets;
 
 import dk.cphbusiness.commands.CommandFactory;
@@ -14,14 +13,20 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Riboe
  */
-@WebServlet(urlPatterns = {"/Controller"})
-public class Controller extends HttpServlet {
+@WebServlet(urlPatterns =
+{
+    "/Controller"
+})
+public class Controller extends HttpServlet
+{
 
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
         String path = "/main.jsp";
         String commandString = request.getParameter("command");
-        if(commandString == null){
+        if (commandString == null)
+        {
             commandString = "main";
         }
         Command command = CommandFactory.getInstance().getCommand(commandString);

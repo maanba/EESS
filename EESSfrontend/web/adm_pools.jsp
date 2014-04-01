@@ -1,7 +1,8 @@
 <%@include file="WEB-INF/jspf/header.jspf" %>
 
 <script>
-    function moveBetweenLists(listFrom, listTo) {
+    function moveBetweenLists(listFrom, listTo) 
+    {
         var SelID = '';
         var SelText = '';
         // Move rows from SS1 to SS2 from bottom to top
@@ -18,56 +19,70 @@
         }
     }
 
-    function getById(id) {
+    function getById(id) 
+    {
         return document.getElementById(id);
     }
 
-    function init() {
+    function init() 
+    {
         checkHappiness();
         derp();
     }
 
     var students = [];
 
-    function initArray() {
+    function initArray() 
+    {
         var studentList = document.getElementById("pools_list_students");
-        for (i = 0; i < studentList.length; i++) {
+        for (i = 0; i < studentList.length; i++) 
+        {
             var studentString = studentList[i].value;
             var student = JSON.parse(studentString);
             students[i] = student;
         }
     }
 
-    function checkHappiness() {
+    function checkHappiness() 
+    {
         console.clear();
         var poolA = document.getElementById("pools_list_a");
         var poolB = document.getElementById("pools_list_b");
         var listStudents = document.getElementById("pools_list_students");
-        for (i = 0; i < students.length; i++) {
+        for (i = 0; i < students.length; i++) 
+        {
             var student = students[i];
             var hasSubjectInA = false;
             var hasSubjectInB = false;
             student["happiness"] = 0;
-            for (j = 0; j < student.firstPriorities.length; j++) {
+            for (j = 0; j < student.firstPriorities.length; j++) 
+            {
                 var subject = student.firstPriorities[j].subjectName;
-                for (l = 0; l < poolA.length; l++) {
-                    if (hasSubjectInA == false) {
+                for (l = 0; l < poolA.length; l++) 
+                {
+                    if (hasSubjectInA == false) 
+                    {
                         var poolSubject = poolA[l].value;
                         poolSubject = JSON.parse(poolSubject).subjectName;
-                        if (poolSubject == subject) {
+                        if (poolSubject == subject) 
+                        {
                             student["happiness"] = student["happiness"] + 50;
                             hasSubjectInA = true;
                         }
                     }
                 }
             }
-            for (j = 0; j < student.secondPriorities.length; j++) {
+            for (j = 0; j < student.secondPriorities.length; j++) 
+            {
                 var subject = student.secondPriorities[j].subjectName;
-                for (l = 0; l < poolA.length; l++) {
-                    if (hasSubjectInA == false) {
+                for (l = 0; l < poolA.length; l++) 
+                {
+                    if (hasSubjectInA == false) 
+                    {
                         var poolSubject = poolA[l].value;
                         poolSubject = JSON.parse(poolSubject).subjectName;
-                        if (poolSubject == subject) {
+                        if (poolSubject == subject) 
+                        {
                             student["happiness"] = student["happiness"] + 25;
                             hasSubjectInA = true;
                         }
@@ -75,26 +90,34 @@
                 }
             }
             // FOR POOL B:
-            for (j = 0; j < student.secondPriorities.length; j++) {
+            for (j = 0; j < student.secondPriorities.length; j++) 
+            {
                 var subject = student.secondPriorities[j].subjectName;
-                for (l = 0; l < poolB.length; l++) {
-                    if (hasSubjectInB == false) {
+                for (l = 0; l < poolB.length; l++) 
+                {
+                    if (hasSubjectInB == false) 
+                    {
                         var poolSubject = poolB[l].value;
                         poolSubject = JSON.parse(poolSubject).subjectName;
-                        if (poolSubject == subject) {
+                        if (poolSubject == subject) 
+                        {
                             student["happiness"] = student["happiness"] + 50;
                             hasSubjectInB = true;
                         }
                     }
                 }
             }
-            for (j = 0; j < student.secondPriorities.length; j++) {
+            for (j = 0; j < student.secondPriorities.length; j++) 
+            {
                 var subject = student.secondPriorities[j].subjectName;
-                for (l = 0; l < poolB.length; l++) {
-                    if (hasSubjectInB == false) {
+                for (l = 0; l < poolB.length; l++) 
+                {
+                    if (hasSubjectInB == false) 
+                    {
                         var poolSubject = poolB[l].value;
                         poolSubject = JSON.parse(poolSubject).subjectName;
-                        if (poolSubject == subject) {
+                        if (poolSubject == subject) 
+                        {
                             student["happiness"] = student["happiness"] + 25;
                             hasSubjectInB = true;
                         }
@@ -102,19 +125,26 @@
                 }
             }
         }
-        students.sort(function(a, b) {
+        students.sort(function(a, b) 
+        {
             return a.happiness - b.happiness;
         });
-        for (i = 0; i < students.length; i++) {
+        for (i = 0; i < students.length; i++) 
+        {
             var student = students[i];
             var option = listStudents[i];
             option.text = student.name;
             option.value = student;
-            if (student.happiness >= 75) {
+            if (student.happiness >= 75) 
+            {
                 option.style.backgroundColor = "#00FF00";
-            } else if (student.happiness >= 50) {
+            } 
+            else if (student.happiness >= 50) 
+            {
                 option.style.backgroundColor = "yellow";
-            } else {
+            } 
+            else 
+            {
                 option.style.backgroundColor = "#FF1313";
             }
         }
@@ -122,11 +152,16 @@
 
     function addLoadEvent(func) {
         var oldonload = window.onload;
-        if (typeof window.onload != 'function') {
+        if (typeof window.onload != 'function') 
+        {
             window.onload = func;
-        } else {
-            window.onload = function() {
-                if (oldonload) {
+        } 
+        else 
+        {
+            window.onload = function() 
+            {
+                if (oldonload) 
+                {
                     oldonload();
                 }
                 func();
@@ -134,10 +169,12 @@
         }
     }
 
-    function generateHiddenFields() {
+    function generateHiddenFields() 
+    {
         var form = document.forms['form_save_pools'];
         var listnone = getById("pools_list_none");
-        for (i = 0; i < listnone.options.length; i++) {
+        for (i = 0; i < listnone.options.length; i++) 
+        {
             var input = document.createElement('input');
             input.type = 'hidden';
             input.name = 'subjects_none';
@@ -145,7 +182,8 @@
             form.appendChild(input);
         }
         var lista = getById("pools_list_a");
-        for (i = 0; i < lista.options.length; i++) {
+        for (i = 0; i < lista.options.length; i++) 
+        {
             var input = document.createElement('input');
             input.type = 'hidden';
             input.name = 'subjects_a';
@@ -153,7 +191,8 @@
             form.appendChild(input);
         }
         var listb = getById("pools_list_b");
-        for (i = 0; i < listb.options.length; i++) {
+        for (i = 0; i < listb.options.length; i++) 
+        {
             var input = document.createElement('input');
             input.type = 'hidden';
             input.name = 'subjects_b';
@@ -163,7 +202,8 @@
         return true;
     }
 
-    function populateLists() {
+    function populateLists() 
+    {
         var iniListNone = getById("pools_list_none");
         var subjectsnone = '${subjects_none}';
         var iniListA = getById("pools_list_a");
@@ -173,19 +213,22 @@
         var iniListB = getById("pools_list_b");
         var subjectsB = '${subjects_b}';
         subjectsB = JSON.parse(subjectsB);
-        for (i = 0; i < subjectsnone.length; i++) {
+        for (i = 0; i < subjectsnone.length; i++) 
+        {
             var opt = document.createElement('option');
             opt.value = JSON.stringify(subjectsnone[i]);
             opt.innerHTML = subjectsnone[i].subjectName + " - " + subjectsnone[i].teacher;
             iniListNone.appendChild(opt);
         }
-        for (i = 0; i < subjectsA.length; i++) {
+        for (i = 0; i < subjectsA.length; i++) 
+        {
             var opt = document.createElement('option');
             opt.value = JSON.stringify(subjectsA[i]);
             opt.innerHTML = subjectsA[i].subjectName + " - " + subjectsA[i].teacher;
             iniListA.appendChild(opt);
         }
-        for (i = 0; i < subjectsB.length; i++) {
+        for (i = 0; i < subjectsB.length; i++) 
+        {
             var opt = document.createElement('option');
             opt.value = JSON.stringify(subjectsB[i]);
             opt.innerHTML = subjectsB[i].subjectName + " - " + subjectsB[i].teacher;

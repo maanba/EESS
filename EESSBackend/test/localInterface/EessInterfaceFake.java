@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package localInterface;
 
 import dto.DTOStudent;
@@ -17,27 +16,28 @@ import javax.ejb.Remote;
  * @author danielthomsen1990
  */
 @Remote
-public interface EessInterfaceFake 
+public interface EessInterfaceFake
 {
+
     public ArrayList<DTOStudent> getStudents();
-    
+
     public DTOStudent getStudent(int id);
-    
+
     public ArrayList<DTOTeacher> getTeachers();
-    
+
     public DTOTeacher getTeacher(int id, String name);
-    
+
     public ArrayList<DTOSubject> getSubjects();
-    
+
     public DTOSubject getSubject(int id);
-    
+
     public void setPool(int id, String pool);
-    
-    public void setSubjectTeacher (int teacherId, int subjectId);
-    
-    public boolean validateLogin (String username, String password);
-    
+
+    public void setSubjectTeacher(int teacherId, int subjectId);
+
+    public boolean validateLogin(String username, String password);
+
     public void setPriorities(DTOStudent student);
-    
+
     public void setSubjects(ArrayList<DTOSubject> subjects);
 }

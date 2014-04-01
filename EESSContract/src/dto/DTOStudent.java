@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package dto;
 
 import java.io.Serializable;
@@ -14,6 +13,7 @@ import java.io.Serializable;
  */
 public class DTOStudent implements Serializable
 {
+
     private static final long serialVersionUID = 1L;
     private int id;
     private String name;
@@ -21,12 +21,12 @@ public class DTOStudent implements Serializable
     private DTOSubject[] secondPriorities;
     private int finalA;
     private int finalB;
-    
+
     public DTOStudent()
     {
     }
-    
-    public DTOStudent(int id, String name) 
+
+    public DTOStudent(int id, String name)
     {
         this.id = id;
         this.name = name;
@@ -34,14 +34,16 @@ public class DTOStudent implements Serializable
         secondPriorities = null;
     }
 
-    public DTOStudent(int id, String name, DTOSubject[] firstPriorities, DTOSubject[] secondPriorities) {
+    public DTOStudent(int id, String name, DTOSubject[] firstPriorities, DTOSubject[] secondPriorities)
+    {
         this.id = id;
         this.name = name;
         this.firstPriorities = firstPriorities;
         this.secondPriorities = secondPriorities;
     }
 
-    public DTOStudent(int id, String name, DTOSubject[] firstPriorities, DTOSubject[] secondPriorities, int finalA, int finalB) {
+    public DTOStudent(int id, String name, DTOSubject[] firstPriorities, DTOSubject[] secondPriorities, int finalA, int finalB)
+    {
         this.id = id;
         this.name = name;
         this.firstPriorities = firstPriorities;
@@ -50,51 +52,63 @@ public class DTOStudent implements Serializable
         this.finalB = finalB;
     }
 
-    public int getFinalA() {
+    public int getFinalA()
+    {
         return finalA;
     }
 
-    public void setFinalA(int finalA) {
+    public void setFinalA(int finalA)
+    {
         this.finalA = finalA;
     }
 
-    public int getFinalB() {
+    public int getFinalB()
+    {
         return finalB;
     }
 
-    public void setFinalB(int finalB) {
+    public void setFinalB(int finalB)
+    {
         this.finalB = finalB;
     }
 
-    public DTOSubject[] getFirstPriorities() {
+    public DTOSubject[] getFirstPriorities()
+    {
         return firstPriorities;
     }
 
-    public DTOSubject[] getSecondPriorities() {
+    public DTOSubject[] getSecondPriorities()
+    {
         return secondPriorities;
     }
 
-    public void setFirstPriorities(DTOSubject[] firstPriorities) {
+    public void setFirstPriorities(DTOSubject[] firstPriorities)
+    {
         this.firstPriorities = firstPriorities;
     }
 
-    public void setSecondPriorities(DTOSubject[] secondPriorities) {
+    public void setSecondPriorities(DTOSubject[] secondPriorities)
+    {
         this.secondPriorities = secondPriorities;
     }
 
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 }

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package dto;
 
 import java.io.Serializable;
@@ -15,37 +14,42 @@ import java.util.ArrayList;
  */
 public class DTOTeacher implements Serializable
 {
+
     private static final long serialVersionUID = 1L;
-    
+
     private int id;
     private String name;
     private String intials;
     private ArrayList subject;
-    
+
     public DTOTeacher()
     {
     }
-    
-    public DTOTeacher (int id, String name, String intials)
+
+    public DTOTeacher(int id, String name, String intials)
     {
         this.id = id;
         this.name = name;
         this.intials = intials;
     }
 
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 

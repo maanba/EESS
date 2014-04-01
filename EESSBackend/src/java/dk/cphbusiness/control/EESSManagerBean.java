@@ -8,47 +8,19 @@ import dk.cphbusiness.model.Teacher;
 import dto.DTOStudent;
 import dto.DTOSubject;
 import dto.DTOTeacher;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import javax.ejb.Stateless;
-import javax.persistence.ColumnResult;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityResult;
-import javax.persistence.FieldResult;
-import javax.persistence.NamedNativeQuery;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.SqlResultSetMapping;
 
 /**
  *
  * @author Ejer
  */
-@SqlResultSetMapping(name = "StudentsWithPriorities",
-        entities =
-        {
-            @EntityResult(entityClass = Student.class, fields =
-                    {
-                        @FieldResult(name = "idStudent", column = "id_student"),
-                        @FieldResult(name = "studentName", column = "student_name")
-            }),
-            @EntityResult(entityClass = Integer.class, fields =
-                    {
-                        @FieldResult(name = "value", column = "priority")
-            }),
-            @EntityResult(entityClass = String.class, fields =
-                    {
-                        @FieldResult(name = "value", column = "subject_name")
-            })
-        },
-        columns =
-        {
-            @ColumnResult(name = "priority"),
-            @ColumnResult(name = "subject_name")
-        }
-)
+
 
 @Stateless
 public class EESSManagerBean implements EessInterface
@@ -87,7 +59,6 @@ public class EESSManagerBean implements EessInterface
         {
             dtoTeachers.add(Assembler.TeacherObjectToDTOTeacher(teachers.get(i)));
         }
-        // ER IKKE TESTET!!!!!!!!
         return dtoTeachers;
     }
 
@@ -124,7 +95,6 @@ public class EESSManagerBean implements EessInterface
     {
         Subject subject = em.find(Subject.class, id);
         subject.setPool(pool);
-        // ER IKKE TESTET!!!!!!!!!!
         persist(subject);
     }
 
@@ -136,7 +106,6 @@ public class EESSManagerBean implements EessInterface
         Query q = em.createQuery("INSERT INTO subject_teacher VALUES (?,?)");
         q.setParameter(0, teacher);
         q.setParameter(1, subject);
-        // ER IKKE TESTET!!!!!!!!!!
         persist(q);
     }
 
@@ -179,7 +148,6 @@ public class EESSManagerBean implements EessInterface
             }
         }
         System.out.println(student);
-        // ER IKKE TESTET!!!!!!!!!!
         persist(student);
     }
 

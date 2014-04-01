@@ -14,22 +14,28 @@
         var amount = ${poolaamount} - 1;
         var numberOfCheckedA = 0;
         var numberOfCheckedB = 0;
-        for (var i = amount; i >= 0; i--){
+        for (var i = amount; i >= 0; i--)
+        {
             var firstACheck = document.getElementById('firstA' + i);
             var secondACheck = document.getElementById('secondA' + i);
-            if (firstACheck.checked){
+            if (firstACheck.checked)
+            {
                 saveChecked(firstACheck.name, 1, "A");
                 numberOfCheckedA++;
             }
-            if (secondACheck.checked){
+            if (secondACheck.checked)
+            {
                 saveChecked(secondACheck.name, 2, "A");
                 numberOfCheckedB++;
             }
         }
         console.log(numberOfCheckedA + " ," + numberOfCheckedB);
-        if ((numberOfCheckedA === 1) && (numberOfCheckedB === 1)){
+        if ((numberOfCheckedA === 1) && (numberOfCheckedB === 1))
+        {
             return true;
-        } else {
+        } 
+        else 
+        {
             return false;
         }
     }
@@ -43,19 +49,24 @@
         {
             var firstBCheck = document.getElementById('firstB' + i);
             var secondBCheck = document.getElementById('secondB' + i);
-            if (firstBCheck.checked){
+            if (firstBCheck.checked)
+            {
                 saveChecked(firstBCheck.name, 1, "B");
                 numberOfCheckedA++;
             }
-            if (secondBCheck.checked){
+            if (secondBCheck.checked)
+            {
                 saveChecked(secondBCheck.name, 2, "B");
                 numberOfCheckedB++;
             }
         }
         console.log(numberOfCheckedA + " ," + numberOfCheckedB);
-        if ((numberOfCheckedA === 1) && (numberOfCheckedB === 1)){
+        if ((numberOfCheckedA === 1) && (numberOfCheckedB === 1))
+        {
             return true;
-        } else {
+        } 
+        else 
+        {
             return false;
         }
     }
@@ -65,9 +76,12 @@
         var boolA = checkA();
         var boolB = checkB();
         console.log(boolA + " ," + boolB);
-        if (boolA && boolB){
+        if (boolA && boolB)
+        {
             return true;
-        } else {
+        } 
+        else 
+        {
             return false;
         }
         

@@ -42,7 +42,7 @@ public class ViewPoolsPageCommand extends TargetCommand
             } else
             {
 //                listnone.add(subject.getSubjectName() + " - " + subject.getTeacher() + " - " + subject.getFirstElectiveRound());
-                  listnone.add(g.toJson(subject));  
+                listnone.add(g.toJson(subject));
             }
         }
         request.setAttribute("subjects_none", listnone);
@@ -51,7 +51,8 @@ public class ViewPoolsPageCommand extends TargetCommand
         ArrayList<DTOStudent> students = instance.getStudents();
         request.setAttribute("student_list", students);
         ArrayList<String> jsonStudents = new ArrayList();
-        for (DTOStudent student : students) {
+        for (DTOStudent student : students)
+        {
             String json = g.toJson(student);
             jsonStudents.add(json);
         }

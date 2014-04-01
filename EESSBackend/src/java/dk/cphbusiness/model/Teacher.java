@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package dk.cphbusiness.model;
 
 import java.io.Serializable;
@@ -29,12 +28,16 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "TEACHER")
 @XmlRootElement
-@NamedQueries({
+@NamedQueries(
+{
     @NamedQuery(name = "Teacher.findAll", query = "SELECT t FROM Teacher t"),
     @NamedQuery(name = "Teacher.findByIdTeacher", query = "SELECT t FROM Teacher t WHERE t.idTeacher = :idTeacher"),
     @NamedQuery(name = "Teacher.findByTeacherName", query = "SELECT t FROM Teacher t WHERE t.teacherName = :teacherName"),
-    @NamedQuery(name = "Teacher.findByIntials", query = "SELECT t FROM Teacher t WHERE t.intials = :intials")})
-public class Teacher implements Serializable {
+    @NamedQuery(name = "Teacher.findByIntials", query = "SELECT t FROM Teacher t WHERE t.intials = :intials")
+})
+public class Teacher implements Serializable
+{
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -50,76 +53,92 @@ public class Teacher implements Serializable {
     @ManyToMany(mappedBy = "teacherCollection")
     private Collection<Subject> subjectCollection;
 
-    public Teacher() {
+    public Teacher()
+    {
     }
 
-    public Teacher(Integer idTeacher) {
+    public Teacher(Integer idTeacher)
+    {
         this.idTeacher = idTeacher;
     }
 
-    public Teacher(Integer idTeacher, String teacherName, String intials) {
+    public Teacher(Integer idTeacher, String teacherName, String intials)
+    {
         this.idTeacher = idTeacher;
         this.teacherName = teacherName;
         this.intials = intials;
         subjectCollection = new ArrayList();
     }
 
-    public Integer getIdTeacher() {
+    public Integer getIdTeacher()
+    {
         return idTeacher;
     }
 
-    public void setIdTeacher(Integer idTeacher) {
+    public void setIdTeacher(Integer idTeacher)
+    {
         this.idTeacher = idTeacher;
     }
 
-    public String getTeacherName() {
+    public String getTeacherName()
+    {
         return teacherName;
     }
 
-    public void setTeacherName(String teacherName) {
+    public void setTeacherName(String teacherName)
+    {
         this.teacherName = teacherName;
     }
 
-    public String getIntials() {
+    public String getIntials()
+    {
         return intials;
     }
 
-    public void setIntials(String intials) {
+    public void setIntials(String intials)
+    {
         this.intials = intials;
     }
 
     @XmlTransient
-    public Collection<Subject> getSubjectCollection() {
+    public Collection<Subject> getSubjectCollection()
+    {
         return subjectCollection;
     }
 
-    public void setSubjectCollection(Collection<Subject> subjectCollection) {
+    public void setSubjectCollection(Collection<Subject> subjectCollection)
+    {
         this.subjectCollection = subjectCollection;
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         int hash = 0;
         hash += (idTeacher != null ? idTeacher.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(Object object)
+    {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Teacher)) {
+        if (!(object instanceof Teacher))
+        {
             return false;
         }
         Teacher other = (Teacher) object;
-        if ((this.idTeacher == null && other.idTeacher != null) || (this.idTeacher != null && !this.idTeacher.equals(other.idTeacher))) {
+        if ((this.idTeacher == null && other.idTeacher != null) || (this.idTeacher != null && !this.idTeacher.equals(other.idTeacher)))
+        {
             return false;
         }
         return true;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "dk.cphbusiness.model.Teacher[ idTeacher=" + idTeacher + " ]";
     }
-    
+
 }

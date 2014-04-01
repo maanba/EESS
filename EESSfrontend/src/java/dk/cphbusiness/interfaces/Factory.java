@@ -1,4 +1,3 @@
-
 package dk.cphbusiness.interfaces;
 
 import dto.DTOStudent;
@@ -9,13 +8,18 @@ import java.util.ArrayList;
  *
  * @author Riboe
  */
-public interface Factory {
+public interface Factory
+{
 
     Command getCommand(String command);
-    
+
     ArrayList<DTOSubject> getSubjects();
+
     ArrayList<DTOStudent> getStudents();
+
     DTOStudent getStudent(int id);
+
     void setPriorities(DTOStudent student);
+
     void setSubjects(ArrayList<DTOSubject> subjects);
 }

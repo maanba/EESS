@@ -1,7 +1,6 @@
 package dk.cphbusiness.commands;
 
 import contract.EessInterface;
-import dk.cphbusiness.control.EESSManagerBeanRemote;
 import dk.cphbusiness.interfaces.Command;
 import dk.cphbusiness.interfaces.Factory;
 import dto.DTOStudent;
@@ -19,13 +18,15 @@ import javax.naming.NamingException;
  *
  * @author Riboe
  */
-public class CommandFactory implements Factory {
+public class CommandFactory implements Factory
+{
 
     private static Factory instance;
     private Map<String, Command> commands = new HashMap();
     private EessInterface managerBean = lookupManagerBeanRemote();
 
-    private CommandFactory() {
+    private CommandFactory()
+    {
         commands.put("main", new TargetCommand("/main.jsp"));
         commands.put("manage_pools", new ViewPoolsPageCommand("/adm_pools.jsp"));
         commands.put("savePriorities", new SavePrioritiesCommand(("/main.jsp")));
@@ -37,45 +38,55 @@ public class CommandFactory implements Factory {
         commands.put("createFile", new CreateFileCommand("/download.jsp"));
     }
 
-    public static Factory getInstance() {
-        if (instance == null) {
+    public static Factory getInstance()
+    {
+        if (instance == null)
+        {
             instance = new CommandFactory();
         }
         return instance;
     }
 
     @Override
-    public Command getCommand(String command) {
+    public Command getCommand(String command)
+    {
         return commands.get(command);
     }
 
     @Override
-    public ArrayList<DTOStudent> getStudents() {
+    public ArrayList<DTOStudent> getStudents()
+    {
         return managerBean.getStudents();
     }
 
     @Override
-    public ArrayList<DTOSubject> getSubjects() {
+    public ArrayList<DTOSubject> getSubjects()
+    {
         return managerBean.getSubjects();
     }
 
-    private EessInterface lookupManagerBeanRemote() {
-        try {
+    private EessInterface lookupManagerBeanRemote()
+    {
+        try
+        {
             Context c = new InitialContext();
             return (EessInterface) c.lookup("java:global/EESSBackend/EESSManagerBean!contract.EessInterface");
-        } catch (NamingException ne) {
+        } catch (NamingException ne)
+        {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);
         }
     }
 
     @Override
-    public DTOStudent getStudent(int id) {
+    public DTOStudent getStudent(int id)
+    {
         return managerBean.getStudent(id);
     }
 
     @Override
-    public void setPriorities(DTOStudent student) {
+    public void setPriorities(DTOStudent student)
+    {
         System.out.println(student.getName().toString());
         System.out.println(".");
         System.out.println(".");

@@ -10,7 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script>
-            document.onload = function(){
+            document.onload = function() 
+            {
                 timer();
             };
             var count = 30;
@@ -19,19 +20,19 @@
 
             function timer()
             {
-                
+
                 count = count - 1;
                 if (count <= 0)
                 {
                     clearInterval(counter);
                     return;
                 }
-                if (UrlExists('http://localhost:8080/EESSfrontend/electivesubjects.dat')){
+                if (UrlExists('http://localhost:8080/EESSfrontend/electivesubjects.dat')) {
                     var loader = document.getElementById('loader');
                     loader.style.display = 'none';
                     var downloadlink = document.getElementById('link');
                     downloadlink.style.display = 'block';
-                    
+
                 }
             }
 

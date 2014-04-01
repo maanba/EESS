@@ -17,12 +17,12 @@ public class Assembler
     {
         DTOSubject[] firsts = new DTOSubject[2];
         DTOSubject[] seconds = new DTOSubject[2];
-        
+
         firsts[0] = Assembler.SubjectObjectToDTOSubject(student.getFirstPriorityA());
         firsts[1] = Assembler.SubjectObjectToDTOSubject(student.getFirstPriorityB());
         seconds[0] = Assembler.SubjectObjectToDTOSubject(student.getSecondPriorityA());
         seconds[1] = Assembler.SubjectObjectToDTOSubject(student.getSecondPriorityB());
-        
+
         DTOStudent newDTOStudent = new DTOStudent(student.getIdStudent(),
                 student.getStudentName(), firsts, seconds, student.getFinalA().getIdSubject(), student.getFinalB().getIdSubject());
         return newDTOStudent;
@@ -54,8 +54,8 @@ public class Assembler
     public static DTOTeacher TeacherObjectToDTOTeacher(Teacher teacher)
     {
         DTOTeacher newDTOTeacher = new DTOTeacher(teacher.getIdTeacher(),
-                        teacher.getTeacherName(),
-                        teacher.getIntials());
+                teacher.getTeacherName(),
+                teacher.getIntials());
         return newDTOTeacher;
     }
 
@@ -70,22 +70,22 @@ public class Assembler
     public static Subject DTOSubjectToSubjectObject(DTOSubject dtoSubject)
     {
         Subject subject = new Subject();
-               subject.setIdSubject(dtoSubject.getId());
-               subject.setSubjectName(dtoSubject.getSubjectName());
-               subject.setDescription(dtoSubject.getDescription());
-               subject.setTeacher(dtoSubject.getTeacher());
-               subject.setPool(dtoSubject.getPool());
-               subject.setFirstElectiveRound(dtoSubject.getFirstElectiveRound());
-               subject.setIsFinal(dtoSubject.getIsFinal());
-       return subject;
+        subject.setIdSubject(dtoSubject.getId());
+        subject.setSubjectName(dtoSubject.getSubjectName());
+        subject.setDescription(dtoSubject.getDescription());
+        subject.setTeacher(dtoSubject.getTeacher());
+        subject.setPool(dtoSubject.getPool());
+        subject.setFirstElectiveRound(dtoSubject.getFirstElectiveRound());
+        subject.setIsFinal(dtoSubject.getIsFinal());
+        return subject;
     }
 
     public static Teacher DTOTeacherToTeacherObject(DTOTeacher dtoTeacher)
     {
         Teacher teacher = new Teacher();
-               teacher.setIdTeacher(dtoTeacher.getId());
-               teacher.setIntials(dtoTeacher.getIntials());
-       return teacher;
+        teacher.setIdTeacher(dtoTeacher.getId());
+        teacher.setIntials(dtoTeacher.getIntials());
+        return teacher;
     }
 
 }

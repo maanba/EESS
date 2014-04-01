@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package dto;
 
 import java.io.Serializable;
@@ -14,6 +13,7 @@ import java.io.Serializable;
  */
 public class DTOSubject implements Serializable
 {
+
     private static final long serialVersionUID = 1L;
     private int id;
     private String subjectName;
@@ -22,13 +22,13 @@ public class DTOSubject implements Serializable
     private String pool;
     private String firstElectiveRound;
     private String isFinal;
-   
-    
+
     public DTOSubject()
     {
     }
 
-    public DTOSubject(int id, String subjectName, String description, String teacher, String pool, String firstElectiveRound, String isFinal) {
+    public DTOSubject(int id, String subjectName, String description, String teacher, String pool, String firstElectiveRound, String isFinal)
+    {
         this.id = id;
         this.subjectName = subjectName;
         this.description = description;
@@ -38,64 +38,74 @@ public class DTOSubject implements Serializable
         this.isFinal = isFinal;
     }
 
-    public String getIsFinal() {
+    public String getIsFinal()
+    {
         return isFinal;
     }
 
-    public void setIsFinal(String isFinal) {
+    public void setIsFinal(String isFinal)
+    {
         this.isFinal = isFinal;
     }
 
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
-    public String getSubjectName() {
+    public String getSubjectName()
+    {
         return subjectName;
     }
 
-    public void setSubjectName(String subjectName) {
+    public void setSubjectName(String subjectName)
+    {
         this.subjectName = subjectName;
     }
 
-    public String getDescription() {
+    public String getDescription()
+    {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String description)
+    {
         this.description = description;
     }
 
-    public String getTeacher() {
+    public String getTeacher()
+    {
         return teacher;
     }
 
-    public void setTeacher(String teacher) {
+    public void setTeacher(String teacher)
+    {
         this.teacher = teacher;
     }
 
-    public String getPool() {
+    public String getPool()
+    {
         return pool;
     }
 
-    public void setPool(String pool) {
+    public void setPool(String pool)
+    {
         this.pool = pool;
     }
 
-    public String getFirstElectiveRound() {
+    public String getFirstElectiveRound()
+    {
         return firstElectiveRound;
     }
 
-    public void setFirstElectiveRound(String firstElectiveRound) {
+    public void setFirstElectiveRound(String firstElectiveRound)
+    {
         this.firstElectiveRound = firstElectiveRound;
     }
-    
-    
-    
-    
-    
+
 }
